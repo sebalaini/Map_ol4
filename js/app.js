@@ -60,6 +60,47 @@ var rulerLayer = new ol.layer.Vector({
   })
 });
 
+// marker var
+var iterator = 0;
+var mySource = ['./img/marker1.png', './img/marker2.png', './img/marker3.png', './img/marker4.png'];
+
+function styleFn(f) {
+
+  var retSytle;
+
+  if (typeof(f.get('mysource')) !== 'undefined') {
+
+    retSytle = new ol.style.Style({
+      image: new ol.style.Icon({
+        opacity: 0.95,
+        src: f.get('mysource')
+      })
+    });
+
+  } else {
+
+    f.set('mysource', mySource[iterator]);
+
+    retSytle = new ol.style.Style({
+      image: new ol.style.Icon({
+        src: mySource[iterator]
+      })
+    });
+
+    // remove the plotted element from the array
+    mySource.shift();
+
+  }
+  return [retSytle];
+}
+
+var mSource = new ol.source.Vector();
+
+ var markLayer = new ol.layer.Vector({
+   source: mSource,
+   style: styleFn
+ });
+
 /**
  * Mouse coordinates.
  */
@@ -124,12 +165,15 @@ var map = new ol.Map({
       // add the pointer coordinate on the screen
       mousePositionControl,
       // add a minimap preview
-      overviewMapControl
+      overviewMapControl,
+       // Add a zoom slider.
+      new ol.control.ZoomSlider(),
   ]),
 
   layers: [
     mapLayer,
-    rulerLayer
+    rulerLayer,
+    markLayer
   ],
 
   overlays: [overlay],
@@ -142,6 +186,12 @@ var map = new ol.Map({
   })
 
 });
+
+/**
+ * Style the mouse position div.
+ */
+
+$(".ol-mouse-position").addClass("ol-control");
 
 /**
  * Add a click handler to the map to render the popup.
@@ -318,6 +368,8 @@ function removeRuler() {
   skipCoordinatesPopup = false;
   // remove the selected class
   $("#ruler").removeClass("ol-rulerSelect");
+  $(".ol-tools button").prop('disabled', false);
+  $(".ol-Marker button").prop('disabled', false);
 }
 
 /**
@@ -327,7 +379,9 @@ function removeRuler() {
 $("#ruler").click(function() {
 
   // disable the buttons
-  $("#Marker").prop('disabled', true);
+  $(".ol-tools button").prop('disabled', true);
+  $(".ol-Marker button").prop('disabled', true);
+  $("#ruler").prop('disabled', false);
 
   // hidden the popup
   overlay.setPosition(undefined);
@@ -335,37 +389,35 @@ $("#ruler").click(function() {
   return (this.tog = !this.tog) ? addRuler() : removeRuler();
 });
 
+/**
+* Marker tools Handler.
+*/
 
-
-/*****************************************
-MARKER TOOL HANDLER
-*****************************************/
-
-// global so we can remove it later
 var mark;
 var counter = "true";
 
 function addMark(Type) {
 
-  counter = "true";
+  counter = true;
 
   mark = new ol.interaction.Draw({
-    source: Msource,
+    source: mSource,
     type: Type
   });
 
   // limit the marker to 4
-  if (Msource.getFeatures().length < 5) {
+  if (mSource.getFeatures().length < 4) {
 
     // disable the buttons to prevent to launch more instances of the function
-    $("#ruler").prop('disabled', true);
+  $(".ol-tools button").prop('disabled', true);
+  $(".ol-Marker button").prop('disabled', true);
 
     skipCoordinatesPopup = true;
     map.addInteraction(mark);
 
     // occurs when you finish to draw the current element
     mark.on("drawend", function() {
-      counter = "true";
+      counter = true;
       drawingMarker();
 
     });
@@ -379,23 +431,193 @@ function addMark(Type) {
       }, 1000);
 
       // re enable the buttons
-      $("#ruler").prop('disabled', false);
+      $(".ol-tools button").prop('disabled', false);
+      $(".ol-Marker button").prop('disabled', false);
 
-      if (counter === "true") {
-        counter = "false";
-        var ind = Msource.getFeatures().length - 1;
-        Msource.getFeatures()[ind].setId(MarkId - 1);
+      if (counter === true) {
+        counter = false;
+        var ind = mSource.getFeatures().length - 1;
+        mSource.getFeatures()[ind].setId(MarkId - 1);
       }
-
     });
 
   } else {
 
     map.removeInteraction(mark);
-
     // show max marker message
     $(".maxmarkers").css("display", "inline");
-
   }
 
 } // end addDraw
+
+/**
+* Create a select element.
+*/
+
+var MarkId = 0;
+
+function drawingMarker() {
+
+  counter = true;
+  // at this point in the source there is still nothing, so the first ID it will be 0
+  var markText = mSource.getFeatures().length + 1;
+  // the ID it's not related with the text
+  MarkId += 1;
+
+  $('<option>', { 'value': (MarkId -1), 'text': 'Marker ' +(markText) }).attr('id', MarkId - 1).appendTo('.plotMarkers');
+
+} // end drawing
+
+/**
+* Marker button event.
+*/
+
+$("#marker").click(function(e) {
+  e.preventDefault();
+
+  addMark("Point");
+  // hidden the popup
+  overlay.setPosition(undefined);
+});
+
+/**
+* Delete button event.
+*/
+
+$("#mDel").on("click", function(e) {
+
+  e.preventDefault();
+
+  // hidden the popup
+  overlay.setPosition(undefined);
+  counter = "false";
+
+  // prevent error enabling the click just if the value of the option selected is not empty
+  if ($('#plotMarkers').val() !== null) {
+
+    // get the ID od the selected element
+    var s = document.getElementById('plotMarkers');
+
+    //add the properties to the main array
+    mySource.unshift(mSource.getFeatureById(s.value).getProperties().mysource);
+
+    // remove the feature connected to that ID
+    mSource.removeFeature(mSource.getFeatureById(s.value));
+
+    // remove selcted option and switch to the defaul option
+    $("#" + s[s.selectedIndex].id).remove();
+    $('#plotMarkers').val('');
+
+    // get max length of the selected element
+    var maxlen = document.getElementById("plotMarkers").options.length;
+
+    // iterate through the options of the list and change the TEXT
+    for (i = 1; i < maxlen; i++) {
+      document.getElementById("plotMarkers").options[i].innerHTML = "Marker " + i;
+    }
+
+    if (mSource.getFeatures().length < 4) {
+      $(".maxmarkers").css("display", "none");
+    }
+
+  } // end if != null
+
+}); // end #markdel click
+
+/**
+* Locate button event.
+*/
+
+$("#mLoc").click(function(e) {
+
+  e.preventDefault();
+
+  // hidden the popup
+  overlay.setPosition(undefined);
+
+  // prevent error enabling the click just if the value of the option selected is not empty
+  if ($('#plotMarkers').val() !== null) {
+
+    var sel = document.getElementById('plotMarkers');
+    // get ID of the current marker
+    var selIds = sel[sel.selectedIndex].id;
+
+    var coord = mSource.getFeatureById(parseInt(selIds)).getGeometry().getCoordinates();
+
+    // center the map on the new coordinates
+    map.getView().centerOn( [parseFloat(coord[0]), parseFloat(coord[1])], map.getSize(),  [($("#map").innerWidth()/2), ($("#map").innerHeight()/2)]);
+  }
+
+}); // end #mLoc click
+
+
+/**
+* Drag button event.
+*/
+
+$("#mDrag").click(function(e) {
+
+  e.preventDefault();
+
+  // hidden the popup
+  overlay.setPosition(undefined);
+
+  map.removeInteraction(mark);
+
+  // prevent error enabling the click just if the value of the option selected is not empty
+  if ($('#plotMarkers').val() !== null) {
+
+    skipCoordinatesPopup = true;
+
+    // disable the buttons to prevent to launch more instances of the function
+    $(".ol-tools button").prop('disabled', true);
+
+    var sel = document.getElementById('plotMarkers');
+    // get ID of the current marker
+    var ids = sel[sel.selectedIndex].id;
+
+    //var pointFeature = new ol.Feature(new ol.geom.Point([0, 0]));
+    var dragInteraction = new ol.interaction.Modify({
+        features: new ol.Collection([mSource.getFeatureById(parseInt(ids))]),
+        style: null
+    });
+
+    map.addInteraction(dragInteraction);
+
+    map.on('pointermove', function(evt) {
+
+      if (evt.dragging) {
+        return;
+      }
+
+      var pixel = map.getEventPixel(evt.originalEvent);
+      var hit = map.forEachLayerAtPixel(pixel, function() { return true; }, null, function(layer) { return layer === markLayer; });
+      map.getTargetElement().style.cursor = hit ? 'pointer' : '';
+    });
+
+    // remove the interaction when the translate of the feature end
+    dragInteraction.on("modifyend", function() {
+
+      map.removeInteraction(dragInteraction);
+
+      // disable the buttons to prevent to launch more instances of the function
+      $("#Marker").prop('disabled', false);
+      $("#tlruler").prop('disabled', false);
+
+      setTimeout(function() {
+        skipCoordinatesPopup = false;
+      }, 1000);
+
+      map.on('pointermove', function(evt) {
+        if (evt.dragging) {
+          return;
+        }
+        var pixel = map.getEventPixel(evt.originalEvent);
+        var hit = map.forEachLayerAtPixel(pixel, function() { return true; }, null, function(layer) { return layer === markLayer; });
+        map.getTargetElement().style.cursor = hit ? 'default' : '';
+      });
+
+    }); // end dragInteraction.on
+  }
+
+}); // end #markdrag click
