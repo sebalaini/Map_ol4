@@ -9,27 +9,38 @@ OL 4
 }
 
 .ol-mouse-position {
-  top: 8px;
-  right: 39px;
-  position: absolute;
-  background-color: rgba(0,60,136,0.4);
-  color: #fff;
-  border-radius: 4px;
-  padding: 3.5px;
-  border: 3px solid rgba(255,255,255,0.6);
+  @include mobile {
+    display: none;
+  }
+  @include tablet {
+    display: block;
+    top: 8px;
+    right: 2.1em;
+    background-color: rgba(0,60,136,0.4) !important;
+    color: #fff;
+    font-size: 1.35em;
+    padding: 4.5px !important;
+    border: 3px solid rgba(255,255,255,0.6);
+  }
+  @include desktop {
+    font-size: 1em;
+    right: 2.3em;
+    padding: 3.5px !important;
+  }
 }
 
-.ol-ruler {
-  background: rgba(0,60,136,.4);
-  border-radius: 4px;
-  border: 3px solid rgba(255,255,255,0.6);
-  top: 8px;
-  left: 39px;
-  width: 29px;
-  height: 29px;
-  z-index: 100;
-  padding: 2px;
-  position: absolute;
+.ol-ruler,
+#marker,
+.fa-trash-alt {
+  @include mobile {
+    display: none;
+  }
+  @include tablet {
+    display: block;
+    z-index: 100;
+    padding: 2px;
+    position: absolute;
+  }
 }
 
 .ol-ruler svg {
@@ -40,6 +51,20 @@ OL 4
 
 .ol-ruler svg {
   fill: #fff;
+}
+
+.fa-map-marker,
+.fa-trash-alt {
+  @include tablet {
+    top: 30px;
+    width: 25px;
+    height: 25px;
+    z-index: 2;
+  }
+}
+
+.fa-trash-o {
+    top: 58px;
 }
 
 .ol-scale-line {
@@ -119,6 +144,32 @@ OL 4
 .ol-control:hover {
   background-color: rgba(255,255,255,.6);
 }
+
+.ol-tools {
+  top: 0.5em;
+  left: calc(.5em + 37px);
+  width: 31px;
+  height: 60px;
+  z-index: 1;
+}
+
+.ol-tools button {
+  position: absolute;
+}
+
+.ol-Marker {
+  @include mobile {
+    display: none;
+  }
+  @include tablet {
+    display: block;
+    width: 120px;
+    z-index: 2;
+    left: .5em;
+    bottom: calc(.5em + 30px);
+  }
+}
+
 
 .ol-zoom {
   top: 0.5em;
@@ -296,9 +347,44 @@ OL 4
   top: 5.5em;
 }
 
+
+.ol-zoom .ol-zoom-out {
+        margin-top: 204px;
+}
+
+.ol-zoomslider {
+  background-color: transparent;
+  top: 2.3em;
+}
+
+.ol-touch .ol-zoom .ol-zoom-out {
+  margin-top: 205px;
+}
+
+.ol-touch .ol-zoomslider {
+  top: 2.75em;
+}
+
+.ol-zoom-in.ol-has-tooltip:hover [role=tooltip],
+.ol-zoom-in.ol-has-tooltip:focus [role=tooltip] {
+  top: 3px;
+}
+
+.ol-zoom-out.ol-has-tooltip:hover [role=tooltip],
+.ol-zoom-out.ol-has-tooltip:focus [role=tooltip] {
+  top: 232px;
+}
+
+
 .ol-overviewmap {
-  right: 0.5em;
-  bottom: 2.4em;
+  @include mobile {
+    display: none;
+  }
+  @include tablet {
+    display: block;
+    right: 0.5em;
+    bottom: 2.4em;
+  }
 }
 
 .ol-overviewmap.ol-uncollapsible {
@@ -331,7 +417,7 @@ OL 4
 }
 
 .ol-overviewmap:not(.ol-collapsed) {
-  background: rgba(255,255,255,.8);
+  background: rgba(255,255,255,.6);
 }
 
 .ol-overviewmap-box {
