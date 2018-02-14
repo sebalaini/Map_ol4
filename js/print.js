@@ -1,4 +1,6 @@
 $(function() {
+
+console.log("ready");
 /**
 * Marker layer.
 */
