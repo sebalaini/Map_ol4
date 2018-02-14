@@ -621,3 +621,8 @@ $("#mDrag").click(function(e) {
   }
 
 }); // end #markdrag click
+
+
+$("#print").click(function() {
+  window.open("https://sebalaini.github.io/Map_ol4/print/print.html");
+});
