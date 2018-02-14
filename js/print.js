@@ -10,46 +10,9 @@ var mapLayer = new ol.layer.Tile({
   })
 });
 
-// marker var
-var iterator = 0;
-var mySource = ['./img/marker1.png', './img/marker2.png', './img/marker3.png', './img/marker4.png'];
-
-function styleFn(f) {
-
-  var retSytle;
-
-  if (typeof(f.get('mysource')) !== 'undefined') {
-
-    retSytle = new ol.style.Style({
-      image: new ol.style.Icon({
-        opacity: 0.95,
-        src: f.get('mysource')
-      })
-    });
-
-  } else {
-
-    f.set('mysource', mySource[iterator]);
-
-    retSytle = new ol.style.Style({
-      image: new ol.style.Icon({
-        src: mySource[iterator]
-      })
-    });
-
-    // remove the plotted element from the array
-    mySource.shift();
-
-  }
-  return [retSytle];
-}
-
-var mSource = new ol.source.Vector();
-
- var markLayer = new ol.layer.Vector({
-   source: mSource,
-   style: styleFn
- });
+var mainWin = window.opener;
+var mSource = mainWin.mSource;
+var markLayer = mainWin.markLayer;
 
 /**
  * Create the map.
