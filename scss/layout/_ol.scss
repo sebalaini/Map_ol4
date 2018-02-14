@@ -146,11 +146,16 @@ OL 4
 }
 
 .ol-tools {
-  top: 0.5em;
-  left: calc(.5em + 37px);
-  width: 31px;
-  height: 60px;
-  z-index: 1;
+  @include mobile {
+    top: 0.5em;
+    left: calc(.5em + 37px);
+    width: 31px;
+    height: 31px;
+    z-index: 1;
+  }
+  @include tablet {
+    height: 60px;
+  }
 }
 
 .ol-tools button {
