@@ -1,12 +1,11 @@
-var mainWin = window.opener;
 
 /**
 * Marker layer.
 */
 
-
-mSource = mainWin.mSource;
-markLayer = mainWin.markLayer;
+var mainWin = window.opener;
+var mSource = mainWin.mSource;
+var markLayer = mainWin.markLayer;
 
 /**
 * Map layer.
@@ -54,8 +53,8 @@ var map = new ol.Map({
   ]),
 */
   layers: [
-    mapLayer,
-    markLayer
+    mapLayer
+//    markLayer
   ]
 
 });
