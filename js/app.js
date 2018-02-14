@@ -624,5 +624,6 @@ $("#mDrag").click(function(e) {
 
 
 $("#print").click(function() {
+  console.log("click");
   window.open("https://sebalaini.github.io/Map_ol4/print/print.html");
 });
