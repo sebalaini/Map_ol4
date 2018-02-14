@@ -1,6 +1,4 @@
-
-(function map() {
-
+$(function() {
 /**
 * Marker layer.
 */
@@ -61,7 +59,7 @@ var map = new ol.Map({
 
 });
 
-})();
+});
 
 
 
