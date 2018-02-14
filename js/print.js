@@ -1,18 +1,7 @@
-$(function() {
-
-console.log("ready");
-/**
-* Marker layer.
-*/
-
-var mainWin = window.opener;
-var mSource = mainWin.mSource;
-var markLayer = mainWin.markLayer;
 
 /**
-* Map layer.
-*/
-
+ * Layers.
+ */
 
 var mapLayer = new ol.layer.Tile({
   source: new ol.source.TileJSON({
@@ -21,9 +10,50 @@ var mapLayer = new ol.layer.Tile({
   })
 });
 
+// marker var
+var iterator = 0;
+var mySource = ['./img/marker1.png', './img/marker2.png', './img/marker3.png', './img/marker4.png'];
+
+function styleFn(f) {
+
+  var retSytle;
+
+  if (typeof(f.get('mysource')) !== 'undefined') {
+
+    retSytle = new ol.style.Style({
+      image: new ol.style.Icon({
+        opacity: 0.95,
+        src: f.get('mysource')
+      })
+    });
+
+  } else {
+
+    f.set('mysource', mySource[iterator]);
+
+    retSytle = new ol.style.Style({
+      image: new ol.style.Icon({
+        src: mySource[iterator]
+      })
+    });
+
+    // remove the plotted element from the array
+    mySource.shift();
+
+  }
+  return [retSytle];
+}
+
+var mSource = new ol.source.Vector();
+
+ var markLayer = new ol.layer.Vector({
+   source: mSource,
+   style: styleFn
+ });
+
 /**
-* Map.
-*/
+ * Create the map.
+ */
 
 var map = new ol.Map({
   interactions: ol.interaction.defaults({altShiftDragRotate: true, shiftDragZoom: true, mouseWheelZoom: false, pinchZoom: false}).extend([
@@ -38,64 +68,20 @@ var map = new ol.Map({
         constrainResolution: true
       })
     ]),
-/*
-  controls: ol.control.defaults({
-//  		attributionOptions: ({
-  //			collapsible: false
-  //		})
-  }).extend([
-      // add the actual scale in "m" and target a custom div
-      new ol.control.ScaleLine({units: 'metric'}),
-      // add the pointer coordinate on the screen
-      mousePositionControl,
-      // add a minimap preview
-      overviewMapControl,
-       // Add a zoom slider.
-      new ol.control.ZoomSlider(),
-  ]),
-*/
+
   layers: [
-    mapLayer
-//    markLayer
-  ]
+    mapLayer,
+    rulerLayer,
+    markLayer
+  ],
+
+  overlays: [overlay],
+  target: 'map',
+  view: new ol.View({
+    center: [0, 0],
+    zoom: 3,
+    minZoom: 3,
+    maxZoom: 8
+  })
 
 });
-
-});
-
-
-
-/**************************************
-DRAG MARKER DIV
-**************************************/
-/*
-$(function() {
-var dragging = false;
-var iX;
-var iY;
-var mdiv;
-
-	$("#map").on("mousedown", ".marker", function(e) {
-		dragging = true;
-		mdiv = $(this);
-		iX = e.clientX - this.offsetLeft;
-		iY = e.clientY - this.offsetTop;
-		this.setCapture && this.setCapture();
-		return false;
-	});
-	document.onmousemove = function(e) {
-		if (dragging) {
-			var e = e || window.event;
-			var oX = e.clientX - iX;
-			var oY = e.clientY - iY;
-			$("#" + mdiv.attr('id')).css({"left": oX + "px", "top": oY + "px"});
-			return false;
-		}
-	};
-	$(document).mouseup(function(e) {
-		dragging = false;
-//		$(".marker")[0].releaseCapture();
-		e.cancelBubble = true;
-	});
-});
-*/
