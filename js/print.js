@@ -2,7 +2,7 @@
  * Layers.
  */
 
-var projection = new ol.proj.Projection({
+const projection = new ol.proj.Projection({
   code: 'EPSG:3857',
   getPointResolution: function(r) {
     return r;
@@ -10,27 +10,32 @@ var projection = new ol.proj.Projection({
   units: 'm'
 });
 
-var mapLayer = new ol.layer.Tile({
+const mapLayer = new ol.layer.Tile({
   source: new ol.source.TileJSON({
     url: 'https://api.tiles.mapbox.com/v3/mapbox.natural-earth-hypso-bathy.json?secure',
     crossOrigin: 'anonymous'
   })
 });
 
-var mainWin = window.opener;
-var mSource = mainWin.mSource;
-var markLayer = mainWin.markLayer;
+let mainWin = window.opener;
+console.log(mainWin.mSource);
+console.log(mainWin.markLayer);
+console.log(mainWin.mySource);
+
+/*
+let mSource = mainWin.mSource;
+let markLayer = mainWin.markLayer;
+*/
 
 /**
  * Create the map.
  */
 
-var map = new ol.Map({
+const map = new ol.Map({
   interactions: ol.interaction.defaults({ altShiftDragRotate: true, shiftDragZoom: true, mouseWheelZoom: false, pinchZoom: false }),
 
   layers: [
-    mapLayer,
-    markLayer
+    mapLayer
   ],
 
   target: 'map',
