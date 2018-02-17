@@ -54,7 +54,7 @@ module.exports = exports = {
             "string": true
         }],
         "no-implied-eval": ERROR,
-        "no-invalid-this": WARN,
+        "no-invalid-this": OFF,
         "no-iterator": ERROR,
         "no-labels": WARN,
         "no-lone-blocks": WARN,

@@ -17,7 +17,7 @@ const mapLayer = new ol.layer.Tile({
   })
 });
 
-let mainWin = window.opener;
+let mainWin = parent.window.opener;
 console.log(mainWin.mSource);
 console.log(mainWin.markLayer);
 console.log(mainWin.mySource);
