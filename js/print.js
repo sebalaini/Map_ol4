@@ -40,8 +40,7 @@ const map = new ol.Map({
     ]),
 
     layers: [
-      mapLayer,
-      markLayer
+      mapLayer
     ],
 
     target: 'map',
