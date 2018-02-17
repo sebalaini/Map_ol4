@@ -2,6 +2,14 @@
  * Layers.
  */
 
+ const projection = new ol.proj.Projection({
+  code: 'EPSG:3857',
+  getPointResolution: function(r) {
+    return r;
+  },
+  units: 'm'
+});
+
 const mapLayer = new ol.layer.Tile({
   source: new ol.source.TileJSON({
     url: 'https://api.tiles.mapbox.com/v3/mapbox.natural-earth-hypso-bathy.json?secure',
@@ -31,17 +39,18 @@ const map = new ol.Map({
       })
     ]),
 
-  layers: [
-    mapLayer,
-    markLayer
-  ],
+    layers: [
+      mapLayer,
+      markLayer
+    ],
 
-  target: 'map',
-  view: new ol.View({
-    center: [ 0, 0 ],
-    zoom: 3,
-    minZoom: 3,
-    maxZoom: 8
-  })
+    target: 'map',
+    view: new ol.View({
+      projection: projection,
+      center: [ 0, 0 ],
+      zoom: 3,
+      minZoom: 3,
+      maxZoom: 8
+    })
 
 });
