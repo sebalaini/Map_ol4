@@ -17,10 +17,6 @@ const mapLayer = new ol.layer.Tile({
   })
 });
 
-let mainWin = window.opener;
-let mSource = mainWin.mSource;
-let markLayer = mainWin.markLayer;
-
 /**
  * Create the map.
  */
@@ -29,8 +25,7 @@ const map = new ol.Map({
   interactions: ol.interaction.defaults({ altShiftDragRotate: true, shiftDragZoom: true, mouseWheelZoom: false, pinchZoom: false }),
 
   layers: [
-    mapLayer,
-    markLayer
+    mapLayer
   ],
 
   target: 'map',
