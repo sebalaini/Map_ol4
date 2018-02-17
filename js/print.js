@@ -17,9 +17,9 @@ const mapLayer = new ol.layer.Tile({
   })
 });
 
-const mainWin = window.opener;
-const mSource = mainWin.mSource;
-const markLayer = mainWin.markLayer;
+let mainWin = window.opener;
+let mSource = mainWin.mSource;
+let markLayer = mainWin.markLayer;
 
 /**
  * Create the map.
@@ -33,7 +33,7 @@ const map = new ol.Map({
     markLayer
   ],
 
-  target: 'mapPrint',
+  target: 'map',
   view: new ol.View({
     projection: projection,
     center: [ 0, 0 ],
