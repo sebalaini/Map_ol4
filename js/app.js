@@ -97,12 +97,12 @@ const styleFn = (f) => {
   return [ retSytle ];
 };
 
-const mSource = new ol.source.Vector();
+let mSource = new ol.source.Vector();
 
- const markLayer = new ol.layer.Vector({
-   source: mSource,
-   style: styleFn
- });
+let markLayer = new ol.layer.Vector({
+  source: mSource,
+  style: styleFn
+});
 
 /**
  * Mouse coordinates.
@@ -145,7 +145,7 @@ const overviewMapControl = new ol.control.OverviewMap({
  * Create the map.
  */
 
-const map = new ol.Map({
+let map = new ol.Map({
   interactions: ol.interaction.defaults({ altShiftDragRotate: true, shiftDragZoom: true, mouseWheelZoom: false, pinchZoom: false }).extend([
       //  drag for overview map
       new ol.interaction.DragRotateAndZoom(),
