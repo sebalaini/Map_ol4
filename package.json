@@ -1,0 +1,28 @@
+{
+  "name": "portfolio_test",
+  "version": "1.0.0",
+  "description": "This repo is for test new features in my portfolio page before to update the live-page",
+  "main": "index.js",
+  "dependencies": {
+    "eslint": "^4.17.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb-es5": "^1.2.0",
+    "eslint-plugin-react": "^7.6.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sebalaini/portfolio_test.git"
+  },
+  "author": "sebalaini",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sebalaini/portfolio_test/issues"
+  },
+  "homepage": "https://github.com/sebalaini/portfolio_test#readme"
+}
