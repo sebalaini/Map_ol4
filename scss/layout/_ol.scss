@@ -175,7 +175,6 @@ OL 4
   }
 }
 
-
 .ol-zoom {
   top: 0.5em;
   left: 0.5em;
@@ -252,7 +251,7 @@ OL 4
 .ol-ruler:hover,
 .ol-rulerSelect {
   text-decoration: none;
-  background-color: rgba(0,60,136,.7);
+  background-color: rgba(0,60,136,.7) !important;
 }
 
 .ol-zoom .ol-zoom-in {
@@ -352,7 +351,6 @@ OL 4
   top: 5.5em;
 }
 
-
 .ol-zoom .ol-zoom-out {
         margin-top: 204px;
 }
@@ -379,7 +377,6 @@ OL 4
 .ol-zoom-out.ol-has-tooltip:focus [role=tooltip] {
   top: 232px;
 }
-
 
 .ol-overviewmap {
   @include mobile {
