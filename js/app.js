@@ -97,6 +97,9 @@ const styleFn = (f) => {
   return [ retSytle ];
 };
 
+// they need to be var because let and const do not create properties on the global object
+// need to export these 2 var for print
+
 var mSource = new ol.source.Vector();
 
 var markLayer = new ol.layer.Vector({
@@ -108,7 +111,6 @@ var markLayer = new ol.layer.Vector({
  * Mouse coordinates.
  */
 
-// this code has to stay before the creation of the map
 const mousePositionControl = new ol.control.MousePosition({
   // the number pass as a parameter is the precision of the coordinates (the numbers before the comma, max 12 )
   coordinateFormat: ol.coordinate.createStringXY(1),
@@ -122,7 +124,6 @@ const mousePositionControl = new ol.control.MousePosition({
 
 const overviewMapControl = new ol.control.OverviewMap({
   className: 'ol-overviewmap ol-custom-overviewmap',
-
   layers: [ mapLayer ],
   view: new ol.View({
     projection: projection
@@ -134,12 +135,6 @@ const overviewMapControl = new ol.control.OverviewMap({
   label: '\u00AB',
   collapsed: false
 });
-
-/**
- * Create the scale bar.
- */
-
-// const scaleLineControl = new ol.control.ScaleLine();
 
 /**
  * Create the map.
@@ -164,13 +159,9 @@ let map = new ol.Map({
   //			collapsible: false
   //		})
   }).extend([
-      // add the actual scale in "m" and target a custom div
       new ol.control.ScaleLine({ units: 'metric' }),
-      // add the pointer coordinate on the screen
       mousePositionControl,
-      // add a minimap preview
       overviewMapControl,
-       // Add a zoom slider.
       new ol.control.ZoomSlider()
   ]),
 
@@ -181,7 +172,9 @@ let map = new ol.Map({
   ],
 
   overlays: [ overlay ],
+
   target: 'map',
+
   view: new ol.View({
     projection: projection,
     center: [ 0, 0 ],
@@ -193,7 +186,7 @@ let map = new ol.Map({
 });
 
 /**
- * Style the mouse position div.
+ * Style the mouse coordinates div.
  */
 
 $('.ol-mouse-position').addClass('ol-control');
@@ -283,7 +276,6 @@ const createMeasureTooltip = () => {
 
 const addRuler = () => {
   skipCoordinatesPopup = true;
-
   // add a selected class
   $('#ruler').addClass('ol-rulerSelect');
 
@@ -353,7 +345,6 @@ const addRuler = () => {
       ol.Observable.unByKey(listener);
     });
 }; // end addRuler
-
 
 /**
 * Remove ruler and related elements.
@@ -455,8 +446,6 @@ const addMark = (Type) => {
     });
   } else {
     map.removeInteraction(mark);
-    // show max marker message
-    $('.maxmarkers').css('display', 'inline');
   }
 }; // end addDraw
 
@@ -466,10 +455,9 @@ const addMark = (Type) => {
 
 $('#marker').click(function(e) {
   e.preventDefault();
+  overlay.setPosition(undefined);
 
   addMark('Point');
-  // hidden the popup
-  overlay.setPosition(undefined);
 });
 
 /**
@@ -478,8 +466,6 @@ $('#marker').click(function(e) {
 
 $('#mDel').on('click', function(e) {
   e.preventDefault();
-
-  // hidden the popup
   overlay.setPosition(undefined);
   counter = false;
 
@@ -506,10 +492,6 @@ $('#mDel').on('click', function(e) {
     for (i = 0; i < maxlen; i++) {
       document.getElementById('plotMarkers').options[i].innerHTML = `Marker ${i + 1}`;
     }
-
-    if (mSource.getFeatures().length < 4) {
-      $('.maxmarkers').css('display', 'none');
-    }
   } // end if != null
 }); // end #markdel click
 
@@ -519,8 +501,6 @@ $('#mDel').on('click', function(e) {
 
 $('#mLoc').click(function(e) {
   e.preventDefault();
-
-  // hidden the popup
   overlay.setPosition(undefined);
 
   // prevent error enabling the click just if the value of the option selected is not empty
@@ -536,15 +516,12 @@ $('#mLoc').click(function(e) {
   }
 }); // end #mLoc click
 
-
 /**
 * Drag button event.
 */
 
 $('#mDrag').click(function(e) {
   e.preventDefault();
-
-  // hidden the popup
   overlay.setPosition(undefined);
 
   map.removeInteraction(mark);
@@ -552,7 +529,6 @@ $('#mDrag').click(function(e) {
   // prevent error enabling the click just if the value of the option selected is not empty
   if ($('#plotMarkers').val() !== null) {
     skipCoordinatesPopup = true;
-
     // disable the buttons to prevent to launch more instances of the function
     $('.ol-tools button').prop('disabled', true);
 
@@ -607,9 +583,12 @@ $('#mDrag').click(function(e) {
         map.getTargetElement().style.cursor = hit ? 'default' : '';
       });
     }); // end dragInteraction.on
-  }
+  } // end !null
 }); // end #markdrag click
 
+/**
+* Print button event.
+*/
 
 $('#print').click(function() {
   window.open('https://sebalaini.github.io/Map_ol4/print/print.html');
