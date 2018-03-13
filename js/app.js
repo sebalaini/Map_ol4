@@ -140,7 +140,7 @@ const overviewMapControl = new ol.control.OverviewMap({
  * Create the map.
  */
 
-let map = new ol.Map({
+const map = new ol.Map({
   interactions: ol.interaction.defaults({ altShiftDragRotate: true, shiftDragZoom: true, mouseWheelZoom: false, pinchZoom: false }).extend([
       //  drag for overview map
       new ol.interaction.DragRotateAndZoom(),
@@ -155,9 +155,6 @@ let map = new ol.Map({
     ]),
 
   controls: ol.control.defaults({
-//  		attributionOptions: ({
-  //			collapsible: false
-  //		})
   }).extend([
       new ol.control.ScaleLine({ units: 'metric' }),
       mousePositionControl,
@@ -174,6 +171,30 @@ let map = new ol.Map({
   overlays: [ overlay ],
 
   target: 'map',
+
+  view: new ol.View({
+    projection: projection,
+    center: [ 0, 0 ],
+    zoom: 3,
+    minZoom: 3,
+    maxZoom: 8
+  })
+
+});
+
+/**
+ * Create the print map.
+ */
+
+const printMap = new ol.Map({
+  interactions: ol.interaction.defaults({ altShiftDragRotate: true, shiftDragZoom: true, mouseWheelZoom: false, pinchZoom: false }),
+
+  layers: [
+    mapLayer,
+    markLayer
+  ],
+
+  target: 'PrintMap',
 
   view: new ol.View({
     projection: projection,
@@ -590,6 +611,8 @@ $('#mDrag').click(function(e) {
 * Print button event.
 */
 
+$('.print').hide();
+
 $('#print').click(function() {
-  window.open('https://sebalaini.github.io/Map_ol4/print/print.html');
+  $('.print').toggle();
 });
