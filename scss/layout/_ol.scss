@@ -263,6 +263,7 @@ OL 4
 }
 
 .ol-attribution {
+  display: none;
   text-align: right;
   bottom: 0.5em;
   right: 0.5em;
@@ -385,7 +386,7 @@ OL 4
   @include tablet {
     display: block;
     right: 0.5em;
-    bottom: 2.4em;
+    bottom: 0.5em;
   }
 }
 
