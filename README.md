@@ -9,12 +9,12 @@ For the interface I switch from old technologies like Jquery Mobile, Jquery UI a
 
 Here the comparison between the old and new interface for Desktop and Mobile; previously there was 2 versions, a mobile and a desktop version, with the new design I developed a progressive web app.
 
-(old version in the top half)
-![Desktop Image](https://user-images.githubusercontent.com/17096352/38385177-1fdfc208-3909-11e8-9fd0-3fd3af8a00a5.png)
+Here the old version
+![Old Image](https://user-images.githubusercontent.com/17096352/38583856-4a4104b0-3d0c-11e8-9930-bad8fa027843.png)
 
-(old version at the left)
+and here the new version
 
-![Mobile Image](https://user-images.githubusercontent.com/17096352/38385199-2c28d3d8-3909-11e8-969e-96f00c6a9c7a.png)
+![New Image](https://user-images.githubusercontent.com/17096352/38583885-6683c32e-3d0c-11e8-8504-d76f4205522f.png)
 
 Speaking about the mapping framework I rewritten almost the whole JS code used with OpenLayers2 and Jquery Mobile with OpenLayers4; the migration to OpenLayers4 required me a lot of time as between the 2 versions, the core is completely different and the approach to solve the same problem are different.
 
