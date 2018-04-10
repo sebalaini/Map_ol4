@@ -9,10 +9,10 @@ For the interface I switch from old technologies like Jquery Mobile, Jquery UI a
 
 Here the comparison between the old and new interface for Desktop and Mobile; previously there was 2 versions, a mobile and a desktop version, with the new design I developed a progressive web app.
 
-old version
+Here the old version
 ![Old Image](https://user-images.githubusercontent.com/17096352/38583856-4a4104b0-3d0c-11e8-9930-bad8fa027843.png)
 
-New version
+and here the new version
 
 ![New Image](https://user-images.githubusercontent.com/17096352/38583885-6683c32e-3d0c-11e8-8504-d76f4205522f.png)
 
