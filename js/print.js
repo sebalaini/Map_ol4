@@ -24,8 +24,8 @@ const mapLayer2 = new ol.layer.Tile({
 });
 
 //let mainWin = parent.window.opener;
-let mSource = parent.mSource;
-let markLayer = parent.markLayer;
+//let mSource = parent.mSource;
+//let markLayer = parent.markLayer;
 
 /*
 let mSource = mainWin.mSource;
@@ -35,6 +35,7 @@ let markLayer = mainWin.markLayer;
 /**
  * Create the map.
  */
+console.log(parent.map.getView().getZoom());
 
 const map = new ol.Map({
   interactions: ol.interaction.defaults({ altShiftDragRotate: true, shiftDragZoom: true, mouseWheelZoom: false, pinchZoom: false }),
@@ -42,15 +43,13 @@ const map = new ol.Map({
   layers: [
     mapLayer2,
     mapLayer,
-    markLayer
+//    markLayer
   ],
 
   target: 'map',
   view: new ol.View({
     projection: projection,
     center: [ 0, 0 ],
-    zoom: 3,
-    minZoom: 3,
-    maxZoom: 8
+    zoom: parent.map.getView().getZoom()
   })
 });
