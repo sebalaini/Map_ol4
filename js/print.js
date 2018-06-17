@@ -35,21 +35,20 @@ let markLayer = mainWin.markLayer;
 /**
  * Create the map.
  */
-console.log(parent.map.getView().getZoom());
 
 const map = new ol.Map({
   interactions: ol.interaction.defaults({ altShiftDragRotate: true, shiftDragZoom: true, mouseWheelZoom: false, pinchZoom: false }),
 
   layers: [
     mapLayer2,
-    mapLayer,
+    mapLayer
 //    markLayer
   ],
 
   target: 'map',
   view: new ol.View({
     projection: projection,
-    center: [ 0, 0 ],
-    zoom: parent.map.getView().getZoom()
+    center: [ 0, 0 ]
+//    zoom: parent.map.getView().getZoom()
   })
 });
