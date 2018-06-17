@@ -34,14 +34,6 @@ closer.onclick = function() {
  * Layers.
  */
 
- const projection = new ol.proj.Projection({
-  code: 'EPSG:3857',
-  getPointResolution: function(r) {
-    return r;
-  },
-  units: 'm'
-});
-
 const mapLayer = new ol.layer.Tile({
   source: new ol.source.TileJSON({
     url: 'https://api.tiles.mapbox.com/v3/mapbox.natural-earth-hypso-bathy.json?secure',
@@ -103,12 +95,9 @@ const styleFn = (f) => {
   return [ retSytle ];
 };
 
-// they need to be var because let and const do not create properties on the global object
-// need to export these 2 var for print
+const mSource = new ol.source.Vector();
 
-var mSource = new ol.source.Vector();
-
-var markLayer = new ol.layer.Vector({
+const markLayer = new ol.layer.Vector({
   source: mSource,
   style: styleFn
 });
@@ -122,24 +111,6 @@ const mousePositionControl = new ol.control.MousePosition({
   coordinateFormat: ol.coordinate.createStringXY(1),
   // blank value when the mouse pointer is outside of the map
   undefinedHTML: '000000.0, 000000.0'
-});
-
-/**
- * Minimap.
- */
-
-const overviewMapControl = new ol.control.OverviewMap({
-  className: 'ol-overviewmap ol-custom-overviewmap',
-  layers: [ mapLayer2 ],
-  view: new ol.View({
-    projection: projection
-  //  extent: ext,
-  //  resolution: ovresolutions[1],
-  //  resolutions: ovresolutions
-  }),
-  collapseLabel: '\u00BB',
-  label: '\u00AB',
-  collapsed: false
 });
 
 /**
@@ -164,7 +135,6 @@ const map = new ol.Map({
   }).extend([
       new ol.control.ScaleLine({ units: 'metric' }),
       mousePositionControl,
-//      overviewMapControl,
       new ol.control.ZoomSlider()
   ]),
 
@@ -180,7 +150,6 @@ const map = new ol.Map({
   target: 'map',
 
   view: new ol.View({
-    projection: projection,
     center: [ 0, 0 ],
     zoom: 3,
     minZoom: 3,
@@ -189,28 +158,53 @@ const map = new ol.Map({
 
 });
 
-/**
- * Create the print map.
- */
+let printLv = 3;
+let printCtr = [ 0, 0 ]
 
 const printMap = new ol.Map({
   interactions: ol.interaction.defaults({ altShiftDragRotate: true, shiftDragZoom: true, mouseWheelZoom: false, pinchZoom: false }),
 
   layers: [
+    mapLayer2,
     mapLayer,
     markLayer
   ],
 
   target: 'PrintMap',
-
   view: new ol.View({
-    projection: projection,
     center: [ 0, 0 ],
-    zoom: 3,
-    minZoom: 3,
-    maxZoom: 8
+    zoom: printLv
   })
 
+});
+
+/**
+ * Create the print map.
+ */
+
+
+map.on('zoomend', function() {
+  printLv = map.getView().getZoom();
+  printMap.getView().setZoom(printLv);
+  printCtr = map.getView().getCenter();
+  printMap.getView().centerOn(printCtr, printMap.getSize(), [ ($('#PrintMap').innerWidth() / 2), ($('#PrintMap').innerHeight() / 2) ]);
+});
+
+map.on('moveend', function() {
+  printLv = map.getView().getZoom();
+  printMap.getView().setZoom(printLv);
+  printCtr = map.getView().getCenter();
+  printMap.getView().centerOn(printCtr, printMap.getSize(), [ ($('#PrintMap').innerWidth() / 2), ($('#PrintMap').innerHeight() / 2) ]);
+});
+
+/**
+* Print button event.
+*/
+
+$('.print').hide();
+
+$('#print').click(function() {
+  $('.print').toggle();
 });
 
 /**
@@ -613,13 +607,3 @@ $('#mDrag').click(function(e) {
     }); // end dragInteraction.on
   } // end !null
 }); // end #markdrag click
-
-/**
-* Print button event.
-*/
-
-$('.print').hide();
-
-$('#print').click(function() {
-  $('.print').toggle();
-});
