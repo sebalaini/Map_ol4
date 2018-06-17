@@ -46,7 +46,13 @@ const mapLayer = new ol.layer.Tile({
   source: new ol.source.TileJSON({
     url: 'https://api.tiles.mapbox.com/v3/mapbox.natural-earth-hypso-bathy.json?secure',
     crossOrigin: 'anonymous'
-  })
+  }),
+  minResolution: 2000
+});
+
+const mapLayer2 = new ol.layer.Tile({
+  source: new ol.source.OSM(),
+  maxResolution: 2000
 });
 
 const rulerLayer = new ol.layer.Vector({
@@ -124,7 +130,7 @@ const mousePositionControl = new ol.control.MousePosition({
 
 const overviewMapControl = new ol.control.OverviewMap({
   className: 'ol-overviewmap ol-custom-overviewmap',
-  layers: [ mapLayer ],
+  layers: [ mapLayer2 ],
   view: new ol.View({
     projection: projection
   //  extent: ext,
@@ -158,11 +164,12 @@ const map = new ol.Map({
   }).extend([
       new ol.control.ScaleLine({ units: 'metric' }),
       mousePositionControl,
-      overviewMapControl,
+//      overviewMapControl,
       new ol.control.ZoomSlider()
   ]),
 
   layers: [
+    mapLayer2,
     mapLayer,
     rulerLayer,
     markLayer
@@ -177,7 +184,7 @@ const map = new ol.Map({
     center: [ 0, 0 ],
     zoom: 3,
     minZoom: 3,
-    maxZoom: 8
+    maxZoom: 12
   })
 
 });
