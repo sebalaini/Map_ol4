@@ -8,30 +8,7 @@ OL 4
   border: 2px solid #00f;
 }
 
-.ol-mouse-position {
-  @include mobile {
-    display: none;
-  }
-  @include tablet {
-    display: block;
-    top: 8px;
-    right: 2.1em;
-    background-color: rgba(0,60,136,0.4) !important;
-    color: #fff;
-    font-size: 1.35em;
-    padding: 4.5px !important;
-    border: 3px solid rgba(255,255,255,0.6);
-  }
-  @include desktop {
-    font-size: 1em;
-    right: 2.3em;
-    padding: 3.5px !important;
-  }
-}
-
-.ol-ruler,
-#marker,
-.fa-trash-alt {
+.ol-tools {
   @include mobile {
     display: none;
   }
@@ -51,6 +28,10 @@ OL 4
 
 .ol-ruler svg {
   fill: #fff;
+}
+
+#print {
+  top: 30px;
 }
 
 .fa-map-marker,

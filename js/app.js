@@ -109,6 +109,8 @@ const markLayer = new ol.layer.Vector({
 const mousePositionControl = new ol.control.MousePosition({
   // the number pass as a parameter is the precision of the coordinates (the numbers before the comma, max 12 )
   coordinateFormat: ol.coordinate.createStringXY(1),
+  // custom target element
+  target: document.getElementById('coord'),
   // blank value when the mouse pointer is outside of the map
   undefinedHTML: '000000.0, 000000.0'
 });
@@ -159,7 +161,7 @@ const map = new ol.Map({
 });
 
 let printLv = 3;
-let printCtr = [ 0, 0 ]
+let printCtr = [ 0, 0 ];
 
 const printMap = new ol.Map({
   interactions: ol.interaction.defaults({ altShiftDragRotate: true, shiftDragZoom: true, mouseWheelZoom: false, pinchZoom: false }),

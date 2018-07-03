@@ -38,4 +38,36 @@ CONTAINER
 
 .titlep {
   margin: 0;
+  padding: 5px;
+}
+
+.coord {
+  & {
+    display: none;
+    width: 260px;
+    height: 25px;
+    position: absolute;
+    bottom: .5em;
+    right: .5em;
+    z-index: 9;
+    padding-left: 10px !important;
+  }
+  @include tablet {
+    display: inline-block;
+  }
+  p {
+    display: inline-block;
+    margin: 0;
+    margin-top: 2px;
+  }
+  #coord {
+    & {
+      float: left;
+      margin-left: 80px;
+      background: none;
+    }
+    .ol-mouse-position {
+      background: none;
+    }
+  }
 }
