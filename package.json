@@ -1,7 +1,7 @@
 {
-  "name": "portfolio_test",
+  "name": "map_ol4",
   "version": "1.0.0",
-  "description": "This repo is for test new features in my portfolio page before to update the live-page",
+  "description": "This project is just a minor project to show what I have worked on since last October as a junior web developer at Buchanan Computing",
   "main": "index.js",
   "dependencies": {
     "eslint": "^4.17.0"
@@ -17,12 +17,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sebalaini/portfolio_test.git"
+    "url": "https://github.com/sebalaini/Map_ol4.git"
   },
   "author": "sebalaini",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sebalaini/portfolio_test/issues"
+    "url": "https://github.com/sebalaini/Map_ol4/issues"
   },
-  "homepage": "https://github.com/sebalaini/portfolio_test#readme"
+  "homepage": "https://github.com/sebalaini/Map_ol4#readme"
 }
