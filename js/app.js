@@ -34,17 +34,17 @@ closer.onclick = function() {
  * Layers.
  */
 
-const mapLayer = new ol.layer.Tile({
-  source: new ol.source.TileJSON({
-    url: 'https://api.tiles.mapbox.com/v3/mapbox.natural-earth-hypso-bathy.json?secure',
-    crossOrigin: 'anonymous'
-  }),
-  minResolution: 2000
-});
+// const mapLayer = new ol.layer.Tile({
+//   source: new ol.source.TileJSON({
+//     url: 'https://api.tiles.mapbox.com/v3/mapbox.natural-earth-hypso-bathy.json?secure',
+//     crossOrigin: 'anonymous'
+//   }),
+//   minResolution: 2000
+// });
 
 const mapLayer2 = new ol.layer.Tile({
-  source: new ol.source.OSM(),
-  maxResolution: 2000
+  source: new ol.source.OSM()
+  // maxResolution: 2000
 });
 
 const rulerLayer = new ol.layer.Vector({
@@ -142,7 +142,7 @@ const map = new ol.Map({
 
   layers: [
     mapLayer2,
-    mapLayer,
+    // mapLayer,
     rulerLayer,
     markLayer
   ],
@@ -168,7 +168,7 @@ const printMap = new ol.Map({
 
   layers: [
     mapLayer2,
-    mapLayer,
+    // mapLayer,
     markLayer
   ],
 
