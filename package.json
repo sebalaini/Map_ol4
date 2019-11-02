@@ -4,7 +4,7 @@
   "description": "This project is just a minor project to show what I have worked on since last October as a junior web developer at Buchanan Computing",
   "main": "index.js",
   "dependencies": {
-    "eslint": "^4.17.0"
+    "eslint": "^4.18.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
