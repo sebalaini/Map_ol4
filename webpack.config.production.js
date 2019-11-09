@@ -12,7 +12,7 @@ module.exports = merge(baseConfig, {
   entry: {
     boundle: [
       '@babel/polyfill',
-      './src/traffweb'
+      './src/index'
     ],
   },
 

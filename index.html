@@ -1,29 +1,24 @@
 <!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <title>TraffWeb Traffic Orders</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://sebalaini.github.io/Map_ol4/css/bootstrap.min.css">
-  <link href="https://sebalaini.github.io/Map_ol4/css/ol.css" rel="stylesheet" />
-  <link href="https://sebalaini.github.io/Map_ol4/css/style.css" rel="stylesheet">
-
-  <meta property="og:title" content="mapping project by Sebastiano">
-  <meta property="og:type" content="website">
-  <meta property="description" content="mapping project by Sebastiano">
-  <meta property="og:description" content="mapping project by Sebastiano">
-  <meta property="og:image" content="https://sebalaini.github.io/Map_ol4/img/ogimage.png">
-  <meta property="og:url" content="https://sebalaini.github.io/Map_ol4/">
-  <meta name=" twitter:card" content="summary_large_image">
-  <meta property="og:site_name" content="mapping project by Sebastiano">
-  <meta name="twitter:image:alt" content="mapping project Logo">
-
-</head>
-
+  <head>
+    <meta charset="utf-8">
+    <title>TraffWeb Traffic Orders</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://sebalaini.github.io/Map_ol4/css/bootstrap.min.css">
+    <link href="https://sebalaini.github.io/Map_ol4/css/ol.css" rel="stylesheet" />
+    <link href="https://sebalaini.github.io/Map_ol4/css/style.css" rel="stylesheet">
+    <meta property="og:title" content="mapping project by Sebastiano">
+    <meta property="og:type" content="website">
+    <meta property="description" content="mapping project by Sebastiano">
+    <meta property="og:description" content="mapping project by Sebastiano">
+    <meta property="og:image" content="https://sebalaini.github.io/Map_ol4/img/ogimage.png">
+    <meta property="og:url" content="https://sebalaini.github.io/Map_ol4/">
+    <meta name=" twitter:card" content="summary_large_image">
+    <meta property="og:site_name" content="mapping project by Sebastiano">
+    <meta name="twitter:image:alt" content="mapping project Logo">
+  </head>
 <body>
   <div id="wrapper">
-
     <header>
       <nav class="navbar navbar-expand-lg navbar-toggleable-md fixed-top">
         <button class="navbar-toggler ml-auto navbar-toggler-right" type="button" data-toggle="collapse"
@@ -40,9 +35,6 @@
         </div>
       </nav>
     </header>
-
-
-
     <!-- MODAL DIV -->
 
     <!-- help -->
@@ -102,10 +94,9 @@
     </div>
 
     <!-- END MODAL DIV -->
-
     <!-- CONTENT DIV -->
-    <div id="content">
 
+    <div id="content">
       <!-- MAP DIV -->
       <main id="map">
         <!-- TOOLBAR DIV  dropdown -->
@@ -117,7 +108,6 @@
           </button>
 
           <div class="dropdown-menu" id="dropdownDiv" aria-labelledby="dropdownMenu">
-
             <div class="section">
 
               <div id="tlrulercontainer">
@@ -129,14 +119,12 @@
                   </select>
                 </div>
               </div>
-            </div> <!-- end div .section-->
+            </div>
 
             <!-- TOOLWINDOW DIV  0 accordion -->
             <div id="toolwindow">
-
               <div id="accordion" role="tablist">
-
-                <!-- TOOLWINDOW DIV  4 accordion -->
+                <!-- TOOLWINDOW DIV  1 accordion -->
                 <div id="drawing" class="card draw">
                   <div class="card-header" role="tab" id="headingFour">
                     <h5 class="mb-0">
@@ -150,7 +138,6 @@
                     <div class="card-body">
 
                       <div id="drawtools">
-
                         <div id="tldraw">
                           <p>Draw a polygon or add a marker to the map...</p>
 
@@ -160,19 +147,15 @@
 
                           <p class="maxmarkers">All 4 markers plotted</p>
                           <p class="maxfilters">All areas plotted</p>
-
                         </div>
 
                         <div class="markerdiv">
-
                           <label id="maxmarkers">All markers plotted</label>
                           <select name="tlfeature" title="marker options" id="tlfeature" class="custom-select">
                             <option value="" disabled selected>View or edit ...</option>
                           </select>
-
                           <div class="textDiv">
                           </div>
-
                           <div class="markers">
                             <button type="button" name="markloc" id="markloc"
                               class="custbtn markauto fas fa-search">Locate</button>
@@ -184,12 +167,10 @@
                         </div>
 
                         <div class="filter">
-
                           <label id="maxfilter">All areas Highlighted</label>
                           <select name="ftlfeature" title="filter options" id="ftlfeature" class="custom-select">
                             <option value="" disabled selected>View or edit ...</option>
                           </select>
-
                           <div class="fmarkers">
                             <button type="button" name="fmarkloc" id="fmarkloc"
                               class="custbtn markauto fas fa-search">Locate</button>
@@ -198,15 +179,11 @@
                             <button type="button" name="fmarkdel" id="fmarkdel"
                               class="custbtn markauto fas fa-trash">Delete</button>
                           </div>
-
                         </div>
-
                       </div>
-
                     </div>
                   </div>
                 </div>
-
               </div>
               <!-- accordion -->
             </div>
@@ -215,7 +192,6 @@
           <!-- dropdown-menu -->
         </div>
         <!-- toolbar -->
-
       </main>
       <!-- end map -->
     </div>
@@ -232,7 +208,6 @@
   <script src="https://sebalaini.github.io/Map_ol4/js/popper.min.js"></script>
   <script src="https://sebalaini.github.io/Map_ol4/js/bootstrap.min.js"></script>
   <script src="https://sebalaini.github.io/Map_ol4/js/ol.js"></script>
-
-</body>
+  <script type="text/javascript" src="/js/boundle.js"></script></body>
 
 </html>
