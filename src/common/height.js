@@ -1,11 +1,4 @@
 /**
- * in this module there is the function that set:
- *   - the max-eight of the tools menu container
- *   - map margin-top and height
- *   - max height of search scheme and legend div
- */
-
-/**
  * set the divs heights
  */
 

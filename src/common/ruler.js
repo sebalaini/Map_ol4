@@ -2,7 +2,7 @@
  * In this module there is the Ruler behaviour
  */
 
-const initRuler = (mapView, overlay) => {
+const initRuler = (mapView) => {
   /**
    * ruler vector layer sources
    */
@@ -52,11 +52,9 @@ const initRuler = (mapView, overlay) => {
   $('#tlruler').on('click', () => {
     /**
      * disable the drawing buttons
-     * hide the popup
      */
-    $('#drawing button').prop('disabled', true)
 
-    overlay.setPosition(undefined)
+    $('#drawing button').prop('disabled', true)
 
     /**
      * add remove ruler interaction on button click
@@ -70,8 +68,6 @@ const initRuler = (mapView, overlay) => {
       addRuler()
       $('#tlruler').addClass('removeRuler')
     }
-    // old hack
-    // return (this.x = !this.x) ? addRuler() : removeRuler()
   })
 
   /**

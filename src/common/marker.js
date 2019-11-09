@@ -1,13 +1,10 @@
-/*
- * In this module there is the marker behaviour
- */
 /**
  * marker vector layer sources
  */
 
 const Msource = new ol.source.Vector()
 
-const initMarker = (mapView, overlay, getLayer) => {
+const initMarker = (mapView) => {
   /**
    * hide the markers button
    * set the marker ID to 0
@@ -22,7 +19,7 @@ const initMarker = (mapView, overlay, getLayer) => {
    */
 
   const myColors = ['rgba(255,255,255,0.1)']
-  const mySource = ['/symbols/marker1.png', '/symbols/marker2.png', '/symbols/marker3.png', '/symbols/marker4.png', '/symbols/marker5.png']
+  const mySource = ['/img/marker1.png', '/img/marker2.png', '/img/marker3.png', '/img/marker4.png']
 
   /**
    * add the correct symbols and prevent duplicates
@@ -105,14 +102,11 @@ const initMarker = (mapView, overlay, getLayer) => {
     /**
      * prevent default behaviour
      * add the mark interaction to the map
-     * hide the popup
      */
 
     e.preventDefault()
 
     addMark('Point')
-
-    overlay.setPosition(undefined)
   })
 
   /**
@@ -155,7 +149,7 @@ const initMarker = (mapView, overlay, getLayer) => {
      * limit the number of markers to 4
      */
 
-    if (Msource.getFeatures().length < 5) {
+    if (Msource.getFeatures().length < 4) {
       /**
        * disable the buttons to prevent multiple instances
        */
@@ -313,12 +307,6 @@ const initMarker = (mapView, overlay, getLayer) => {
   $(function () {
     $('#tlfeature').change(function () {
       /**
-       * hide the popup
-       */
-
-      overlay.setPosition(undefined)
-
-      /**
        * we hide all the textareas
        * we display the current textarea
        */
@@ -348,12 +336,9 @@ const initMarker = (mapView, overlay, getLayer) => {
   $('#markloc').on('click', function (e) {
     /**
      * prevent default behaviour
-     * hide the popup
      */
 
     e.preventDefault()
-
-    overlay.setPosition(undefined)
 
     /**
      * prevent error enabling the click just if the value of the option selected is not empty
@@ -386,13 +371,9 @@ const initMarker = (mapView, overlay, getLayer) => {
   $('#markdrag').on('click', function (e) {
     /**
      * prevent default behaviour
-     * hide the popup
      */
 
     e.preventDefault()
-
-    overlay.setPosition(undefined)
-
     /**
      * prevent error enabling the click just if the value of the option selected is not empty
      */
@@ -471,32 +452,6 @@ const initMarker = (mapView, overlay, getLayer) => {
         }, 300)
 
         /**
-         * pointermove event listen
-         */
-
-        mapView.on('pointermove', function (evt) {
-          /**
-           * if you are moving the map return
-           */
-
-          if (evt.dragging) {
-            return
-          }
-
-          /**
-           * change the pointer style to match the data layer
-           */
-
-          let pixel = mapView.getEventPixel(evt.originalEvent)
-          let hit = mapView.forEachLayerAtPixel(pixel, () => {
-            return true
-          }, null, (layer) => {
-            return layer === getLayer
-          })
-          mapView.getTargetElement().style.cursor = hit ? 'pointer' : ''
-        })
-
-        /**
          * end dragInteraction.on('modifyend', () =>
          * end if ($('#tlfeature').val() !== null)
          * end $('#markdrag').on('click', function (e) {
@@ -512,13 +467,10 @@ const initMarker = (mapView, overlay, getLayer) => {
   $('#markdel').on('click', function (e) {
     /**
      * prevent default behaviour
-     * hide the popup
      * set counter to false
      */
 
     e.preventDefault()
-
-    overlay.setPosition(undefined)
 
     counter = false
 
