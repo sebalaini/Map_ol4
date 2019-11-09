@@ -1,6 +1,10 @@
 const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+const ROOT_FOLDER = __dirname
+const SRC_FOLDER = path.join(ROOT_FOLDER, 'src')
 
 module.exports = {
   module: {
@@ -82,6 +86,12 @@ module.exports = {
     new CleanWebpackPlugin([
       path.join(__dirname, 'dist'),
     ]),
+
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: path.join(SRC_FOLDER, 'index.html'),
+      chunks: ['boundle'],
+    }),
 
     // EXTRACT CSS FILE FROM JS
     new MiniCssExtractPlugin(),
