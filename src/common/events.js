@@ -1,13 +1,4 @@
 /**
- * in this module there are:
- *   - copyright year
- *   - dropdown behaviour for the tool menu
- *   - hide/show navbar/tool menu on click for mobile
- *   - general behaviour for all the buttons in the page
- *   - print button behaviour
- */
-
-/**
  * we create a big function to initialize all the events inside
  * and we call this function in the main app
  */

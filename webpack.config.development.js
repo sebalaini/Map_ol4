@@ -42,10 +42,9 @@ module.exports = merge(baseConfig, {
     }),
 
     new CopyWebpackPlugin([
-      // CLIENT CSS
       {
-        from: 'src/css',
-        to: 'css',
+        from: 'src/img',
+        to: 'img',
         toType: 'dir'
       },
     ])

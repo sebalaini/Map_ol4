@@ -5,20 +5,12 @@ GENERAL
 .tlruler,
 .nav-item button,
 .custbtn,
-.groupbtn,
-.btn,
-#feature_list label,
-#feature_list .fa,
-#rtc_feature_list label,
-#rtc_feature_list .fa,
-#inv_feature_list label,
-#inv_feature_list .fa {
+.btn {
   cursor: pointer;
 }
 
 .tlruler,
-.custbtn,
-.groupbtn {
+.custbtn {
   width: 30px;
   height: 30px;
   margin: 5px;
@@ -37,100 +29,17 @@ GENERAL
   line-height: 1.25;
 }
 
-.psadelbtn,
-.markSubmit {
-  width: 100%;
-}
-
-.markSubmit {
-  margin: auto;
-}
-
 .tlruler:hover,
 .custbtnsel,
-.custbtn:hover,
-.groupbtn:hover {
+.custbtn:hover {
   color: #fff;
   background-color: #727b84;
   border-color: #6c757d;
 }
 
 .tlruler:focus,
-.custbtn:focus,
-.groupbtn:focus {
+.custbtn:focus {
   box-shadow: 0 0 0 3px rgba(134,142,150,.5);
-}
-
-
-
-/****************
-POPUP BTN
-****************/
-
-.infobutt  {
-  display: block;
-  padding: 4px;
-  width: 98%;
-  margin: 10px 0 5px;
-}
-
-#itembutton {
-  @include mobile {
-    width: 98%;
-    margin: 10px 0 0;
-    max-width: 760px;
-    height: auto;
-    padding: 6px;
-    white-space: normal;
-    font-size: 1rem;
-  }
-  @include tablet {
-    width: 100%;
-    max-width: 310px;
-  }
-}
-
-.itmbtnlist {
-  position: relative;
-  left: -4px;
-  background: none;
-}
-
-#itembutton .fa-caret-right {
-  margin-top: 2px;
-}
-
-#itembutton .fa-caret-down {
-  margin-right: 2px;
-  margin-top: 2px;
-}
-
-#popup-content {
-  .itembutton_am {
-    margin-bottom: 5px;
-  }
-  .am_plus {
-    @include tablet {
-      max-width: 345px;
-    }
-  }
-}
-
-
-/****************
-FORMS
-****************/
-
-#commentSubmit,
-#submit {
-  width: 100%;
-  height: 38px;
-  margin: 0;
-  padding: 0 10px;
-}
-
-#commentSubmit {
-  margin-top: 10px;
 }
 
 
@@ -168,204 +77,24 @@ TOOLS
   display: none !important;
 }
 
-.zoombtn {
-  float: left;
-}
-
-
-
-/****************
-GEO LOCATION
-****************/
-
-.locposbutton {
-  @include mobile {
-    position: absolute;
-    top: -49px;
-    left: 70px;
-    width: 50px;
-    height: 40px;
-    z-index: 1035;
-    margin: 0;
-    border: 1px solid #d9b310;
-  }
-  @include tablet {
-    top: 5px;
-    left: 60px;
-    z-index: 980;
-    border: none;
-  }
-}
-
-
-/****************
-FRA PLOT BUTTON
-****************/
-
-#FraMarker {
-  @include mobile {
-    position: absolute;
-    top: -49px;
-    left: 124px;
-    width: 50px;
-    height: 40px;
-    z-index: 1035;
-    margin: 0;
-    border: 1px solid #d9b310;
-  }
-  @include tablet {
-    top: 5px;
-    left: 114px;
-    border: none;
-  }
-}
-
 
 
 /****************
 RULER
 ****************/
 
-.tlruler .rulerSvg,
-.locposbutton .posiconSvg {
-  fill: white;
-  stroke-width: 10px;
-  stroke: #fff;
+#dropdown-toggle,
+.tlruler {
+  color: #fff;
 }
 
-.tlruler:hover .rulerSvg,
-.locposbutton:hover .posiconSvg {
-  fill: #d9b310;
-  stroke: #d9b310;
+#dropdown-toggle,
+.tlruler:hover {
+  color: #d9b310;
 }
 
-/* search button, check if we can rename it */
 .toolbtn {
   margin-top: 5px;
-}
-
-#search .input-group-addon {
-  padding-top: 10px;
-}
-
-.groupbtn {
-  width: auto;
-  padding: 0 5px;
-}
-
-.groupbtn,
-#legcont ul li label {
-  cursor: pointer;
-}
-
-
-
-/****************
-INVMAP LAYER BUTTONS
-****************/
-
-.layerbtn {
-  font-family: apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important;
-  width: auto;
-  padding: 8px;
-  margin: 5px;
-}
-
-.layerbtn::before {
-  font-family: "FontAwesome";
-  margin-right: 10px;
-}
-
-
-
-/****************
-LEGEND
-****************/
-
-#legend .fa:before,
-#legend .fa-remove:before,
-#legend .fa-close:before,
-#legend .fa-times:before,
-#pmlegend .fa:before,
-#pmlegend .fa-remove:before,
-#pmlegend .fa-close:before,
-#pmlegend .fa-times:before {
-  margin-right: 10px !important;
-}
-
-#feature_list .fa:before,
-#feature_list .fa-remove:before,
-#feature_list .fa-close:before,
-#feature_list .fa-times:before,
-#rtc_feature_list .fa:before,
-#rtc_feature_list .fa-remove:before,
-#rtc_feature_list .fa-close:before,
-#rtc_feature_list .fa-times:before,
-#inv_feature_list .fa:before,
-#inv_feature_list .fa-remove:before,
-#inv_feature_list .fa-close:before,
-#inv_feature_list .fa-times:before {
-  color: #fff;
-  background: #868e96;
-  border-radius: 0.25rem;
-  padding: 3px;
-}
-
-#feature_list .fa-remove:before,
-#feature_list .fa-close:before,
-#feature_list .fa-times:before,
-#rtc_feature_list .fa-remove:before,
-#rtc_feature_list .fa-close:before,
-#rtc_feature_list .fa-times:before,
-#inv_feature_list .fa-remove:before,
-#inv_feature_list .fa-close:before,
-#inv_feature_list .fa-times:before {
-  padding: 3px 4px 3px 5px;
-}
-
-#feature_list .grpbtnlist,
-#rtc_feature_list .grpbtnlist,
-#inv_feature_list .grpbtnlist {
-/*
-  position: absolute;
-  left: 20px;
-*/
-  width: 1px;
-  height: 1px;
-  margin-top: 3px;
-  background: none;
-}
-
-#feature_list .grpbtnlist:before,
-#rtc_feature_list .grpbtnlist:before,
-#inv_feature_list .grpbtnlist:before {
-  background: none !important;
-}
-
-
-/****************
-ACCSMAP LEGEND
-****************/
-
-.group_btn {
-  margin: 0 auto 5px;
-  width:100%;
-}
-
-#feature_list .group_btn:before {
-  background: none !important;
-}
-
-
-
-/****************
-ACCSMAP DATEPICKER
-****************/
-
-.datedisplay {
-  p {
-    margin-top: 10px;
-  }
 }
 
 
@@ -382,144 +111,4 @@ DRAW
 
 .markauto:before {
   margin-right: 5px;
-}
-
-/****************
-MAP ROTATION
-****************/
-/*
-.ol-rotate-reset {
-  @include desktop {
-    display: none !important;
-  }
-}
-
-.rotate-minus,
-.rotate-plus {
-  top: 32px;
-  z-index: 2000;
-  background: none !important;
-}
-
-.rotate-plus {
-  right: 12px;
-}
-
-.rotate-minus {
-  right: 67px;
-}
-
-#rotplus,
-#rotminus {
-  cursor: pointer;
-  height: 30px;
-  width: 14px;
-  background-color: none !important;
-}
-
-#rotplus {
-  background: url("../images/arrowright.png") center center no-repeat;
-}
-
-#rotminus {
-  background: url("../images/arrowleft.png") center center no-repeat;
-}
-
-#compass {
-	width: 50px;
-  height: 50px;
-	border-radius: 50%;
-	margin: 0 auto;
-	position: absolute;
-  z-index: 100;
-  right: 25px;
-  top: 25px;
-	border: 2px solid #777;
-	background: #000;
-	box-shadow:
-		0 0 4px #000,
-		0 0 1px 10px #ccc,
-		5px 12px 15px #1d2731;
-}
-
-#compass:before {
-	content: '';
-	border: 2px dashed #d3d3d3;
-	position: absolute;
-	left: 10px;
-  right: 10px;
-	bottom: 10px;
-  top: 10px;
-	border-radius: 50%;
-}
-
-#compass:after {
-	content: '';
-	position: absolute;
-	left: -10px;
-  right: -10px;
-	bottom: -10px;
-  top: -10px;
-	border-radius: 50%;
-	background: linear-gradient(
-		-45deg,
-		rgba(255,255,255,0.9) 0%,
-		rgba(255,255,255,0.3) 47%,
-		rgba(255,255,255,0) 48%,
-		rgba(255,255,255,0) 100%
-	);
-}
-
-#pointer {
-	width: 10px;
-  height: 20px;
-	position: relative;
-	left: 50%;
-  top: 50%;
-	margin-left: -5px;
-  margin-top: -10px;
-  z-index: 9000;
-}
-
-#pointer:before {
-	content: '';
-	position: absolute;
-	left: -5px;
-  right: 0;
-	top: -10px;
-  width: 20px;
-  height: 40px;
-	background: url("../images/compassarrow.png") center center no-repeat;
-  background-size: 14px;
-}
-
-#pointer:after {
-	content: '';
-	width: 10px;
-  height: 10px;
-	background: #4781c0;
-	border-radius: 50%;
-	box-shadow:
-		inset 0 0 4px 2px #4d4d4d,
-		0 0 5px 1px white;
-	position: absolute;
-	left: 50%;
-  top: 50%;
-	margin-left: -5px;
-  margin-top: -5px;
-}
-
-*/
-
-/****************
-OV MAP
-****************/
-
-#showovmap {
-  width: 40px;
-  padding-left: 11px;
-}
-
-.ol-overviewmap {
-  bottom: 0.7em;
 }

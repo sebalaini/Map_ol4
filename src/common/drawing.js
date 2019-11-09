@@ -8,7 +8,7 @@
 
 const Dsource = new ol.source.Vector()
 
-const initDrawing = (mapView, fixed, overlay, getLayer) => {
+const initDrawing = (mapView) => {
   /**
    * hide the drawing button
    * set the drawing area Id to 0
@@ -73,28 +73,22 @@ const initDrawing = (mapView, fixed, overlay, getLayer) => {
     /**
      * prevent default behaviour
      * add interaction
-     * hide the popup
      */
 
     e.preventDefault()
 
     addDraw('Polygon')
-
-    overlay.setPosition(undefined)
   })
 
   $('#Circle').on('click', function (e) {
     /**
      * prevent default behaviour
      * add interaction
-     * hide the popup
      */
 
     e.preventDefault()
 
     addDraw('Circle')
-
-    overlay.setPosition(undefined)
   })
 
   /*
@@ -115,13 +109,7 @@ const initDrawing = (mapView, fixed, overlay, getLayer) => {
      * we limit the number of area based on the type of traffweb
      */
 
-    let limit
-    if (fixed.app === 'parkmap') {
-      limit = 5
-    }
-    else {
-      limit = 1
-    }
+    let limit = 3
 
     if (Dsource.getFeatures().length < limit) {
       /**
@@ -251,9 +239,6 @@ const initDrawing = (mapView, fixed, overlay, getLayer) => {
 
   $(function () {
     $('#ftlfeature').change(function () {
-      // hide the popup
-      overlay.setPosition(undefined)
-
       /**
        * display the drawing buttons if the tlfeature element is not empty
        */
@@ -275,12 +260,9 @@ const initDrawing = (mapView, fixed, overlay, getLayer) => {
   $('#fmarkloc').on('click', function (e) {
     /**
      * prevent default behaviour
-     * hide the popup
      */
 
     e.preventDefault()
-
-    overlay.setPosition(undefined)
 
     /**
      * prevent error enabling the click just if the value of the option selected is not empty
@@ -328,12 +310,9 @@ const initDrawing = (mapView, fixed, overlay, getLayer) => {
   $('#fmarkdrag').on('click', function (e) {
     /**
      * prevent default behaviour
-     * hide the popup
      */
 
     e.preventDefault()
-
-    overlay.setPosition(undefined)
 
     /**
      * prevent error enabling the click just if the value of the option selected is not empty
@@ -408,39 +387,6 @@ const initDrawing = (mapView, fixed, overlay, getLayer) => {
           $('#drawing button').prop('disabled', false)
           $('#tlruler').prop('disabled', false)
         }, 300)
-
-        /**
-         * pointermove event listener
-         */
-
-        mapView.on('pointermove', function (evt) {
-          if (evt.dragging) {
-            return
-          }
-
-          /**
-           * change the pointer style to match the data layer
-           */
-
-          let pixel = mapView.getEventPixel(evt.originalEvent)
-          let hit = mapView.forEachLayerAtPixel(pixel, () => {
-            return true
-          }, null, (layer) => {
-            return layer === getLayer
-          })
-          mapView.getTargetElement().style.cursor = hit ? 'pointer' : ''
-        })
-
-        /**
-         * we check if it's an accsmap traffweb
-         * if is true we clcik twice on the filter button to update the filter view
-         */
-
-        if (fixed.app === 'accsmap_plus' && $('#fmarkfil').val() === 'on') {
-          $('#fmarkfil').click()
-          $('#fmarkfil').click()
-        }
-
         /**
          * end fdragInteraction.on('modifyend', () =>
          */
@@ -460,13 +406,10 @@ const initDrawing = (mapView, fixed, overlay, getLayer) => {
   $('#fmarkdel').on('click', function (e) {
     /**
      * prevent default behaviour
-     * hide the popup
      * set counter to false
      */
 
     e.preventDefault()
-
-    overlay.setPosition(undefined)
 
     counter = false
 
@@ -490,13 +433,7 @@ const initDrawing = (mapView, fixed, overlay, getLayer) => {
        * we limit the number of area based on the type of traffweb
        */
 
-      let limit
-      if (fixed.app === 'parkmap') {
-        limit = 5
-      }
-      else {
-        limit = 1
-      }
+      let limit = 3
 
       /**
        * if the limit is not reach hide the max filters message
@@ -546,50 +483,12 @@ const initDrawing = (mapView, fixed, overlay, getLayer) => {
 
         $('.filter').css('display', 'none')
       }
-
-      /**
-       * check if is an accsmap traffweb
-       * and the layer filter is ON
-       */
-
-      if (fixed.app === 'accsmap_plus' && $('#fmarkfil').val() === 'on') {
-        /**
-         * click the filter button to reset the polygon filter and the icons
-         * run it with a delay to take the correct values
-         */
-
-        $('#fmarkfil').click()
-      }
-
       /**
        * end if ($('#ftlfeature').val() !== null)
        * end $('#fmarkdel').on('click', function (e)
        */
     }
   })
-
-  $('#fmarkfil').on('click', function (e) {
-    /**
-     * prevent default behaviour
-     * hide the popup
-     * set counter to false
-     */
-
-    e.preventDefault()
-
-    overlay.setPosition(undefined)
-
-    // change class and attribute
-    if ($(this).attr('value') === 'on') {
-      $(this).removeClass('fa-check').addClass('fa fa-times').attr('value', 'off')
-      $('#filterregion').text('Polygon Filter Off')
-    }
-    else {
-      $(this).removeClass('fa-times').addClass('fa fa-check').attr('value', 'on')
-      $('#filterregion').text('Polygon Filter On')
-    }
-  })
-
   /**
    * end initDrawing() =>
    */
