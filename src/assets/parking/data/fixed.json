@@ -1,0 +1,28 @@
+{
+  "settings": [{
+    "licenceno": "100027293",
+    "urlmain": "https://www.traffwebdev.uk/parking/",
+    "wmsmap": "https://www.traffwebdev.uk/cgi-bin/wmsmaps3?&amp;service=WMS",
+    "wmscopy": "https://www.traffwebdev.uk/cgi-bin/wms_copy?&amp;service=WMS",
+    "wmslayer": "LAcode",
+    "cachelayer": "bccache",
+    "wmsfeat": "https://www.traffwebdev.uk/cgi-bin/bcparking?&amp;service=WMS",
+    "bounds": "503000,174000,513000,193000",
+    "defpos": "508000,182700,1",
+    "scales": "250,500,1000,2500,5000,10000,25000",
+    "ovlayer": "bccache2",
+    "ovmap": "https://www.buchananmapping.co.uk/mapcache/?",
+    "sched": "data/sched/",
+    "msched": "data/msched/",
+    "customername": "London Borough of Hillingdon",
+    "website": "http://buchanancomputing.net/",
+    "tools": "off",
+    "area": "Hillingdon",
+    "popupname": "",
+    "tabopen": "off",
+    "alwaysmodal": "off",
+    "popupopen": "off",
+    "app": "parkmap",
+    "comment": "off"
+  }]
+}

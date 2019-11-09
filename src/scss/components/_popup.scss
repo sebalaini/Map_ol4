@@ -1,0 +1,519 @@
+/****************
+POPUP
+****************/
+
+#popup {
+  & {
+    z-index: 20;
+    background-color: #fff;
+    cursor: default !important;
+  }
+  button {
+    cursor: pointer;
+  }
+}
+
+#popup,
+#mobpopup {
+  ul label {
+    cursor: pointer;
+  }
+  .edit-action {
+    width: auto;
+    padding: 0 7px;
+  }
+  .myview {
+    & {
+      margin: 4px auto;
+    }
+    &::before {
+      margin-right: 5px;
+    }
+  }
+  .delete,
+  .save,
+  .editbtn {
+    cursor: pointer;
+    width: 47%;
+    margin: 0 3px;
+  }
+}
+
+time {
+  white-space: nowrap;
+}
+
+.ol-pop,
+.ol-popup,
+.hoverPopup {
+  position: absolute;
+  background-color: #fff;
+  -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+  padding: 15px;
+  padding-right: 20px;
+  border-radius: 0.25rem;
+  border: 1px solid #cccccc;
+  bottom: 12px;
+  left: -50px;
+  min-width: 365px;
+}
+
+.pluspop {
+  & {
+    min-width: 400px
+  }
+  #popup-content {
+    div {
+      max-width: 360px;
+    }
+  }
+}
+
+.ol-pop:after,
+.ol-pop:before,
+.hoverPop:after,
+.hoverPop:before {
+  top: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.ol-pop:after,
+.hoverPop:after {
+  border-top-color: #fff;
+  border-width: 10px;
+  left: 48px;
+  margin-left: -10px;
+}
+
+.ol-popup-closer {
+  text-decoration: none;
+  position: absolute;
+  top: 4px;
+  right: 8px;
+}
+
+.ol-poprot,
+.hoverPoprot {
+  background-color: #fff;
+}
+
+.ol-poprot::after,
+.ol-poprot::before,
+.hoverPoprot:after,
+.hoverPoprot:before {
+  position: absolute;
+  bottom: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  pointer-events: none;
+  border-top-color: #fff;
+  border-width: 11px;
+  left: 48px;
+  margin-left: -11px;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+#popup-closer {
+  color: #1d2731;
+}
+
+#popup-closer:hover {
+  color: #d9b310;
+  text-decoration: none;
+}
+
+#popup-content {
+  & {
+    overflow-y: auto;
+    font-size: 0.95rem;
+  }
+  div {
+    max-width: 310px;
+  }
+  a,
+  button {
+    width: 100%;
+    overflow: hidden;
+  }
+  img {
+    max-width: 45%;
+  }
+}
+
+#mobpopupbody {
+  button {
+    overflow: hidden;
+  }
+}
+
+
+
+/****************
+HOVER POPUP
+****************/
+
+#info {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+}
+
+.hoverPopup {
+  & {
+    min-width: 250px;
+    z-index: 10;
+  }
+  p {
+    margin: 0 auto;
+  }
+}
+
+
+
+/****************
+POPUP TEXT
+****************/
+
+.infotitle {
+  font-weight: bold;
+}
+
+.infotab {
+  display: inline-block;
+  width: 100%;
+}
+
+.custflotitle {
+  float:right;
+  max-width:50%;
+  text-align:right;
+}
+
+.spacer {
+  height: 15px;
+}
+
+.infotitle_norm {
+  font-weight: normal;
+}
+
+.doclist,
+#itemlist {
+  & {
+    padding: 0 10px 0;
+  }
+  li {
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid #868e96;
+    border-radius: 0.25rem;
+    margin-bottom: 2px;
+  }
+}
+
+.pcTitle {
+  display: block;
+  width: 100%;
+}
+
+
+
+/****************
+CUSTOM POPUP STYLE
+****************/
+
+.invdoclist {
+  & {
+    padding: 5px 10px;
+    margin-bottom: .5rem;
+  }
+  li {
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid #868e96;
+    border-radius: .25rem;
+    margin-bottom: 2px;
+  }
+}
+
+
+
+/****************
+CUSTOM POPUP STYLE
+****************/
+
+// essex and tvp
+.estab,
+.tvptab {
+  text-align: center;
+}
+
+.estableft,
+.tvptableft {
+  text-align: left;
+}
+
+.estab th,
+.estab td,
+.estabacc th,
+.coltabacc th,
+.tvptab th,
+.tvptabacc th {
+  padding: 0 5px;
+}
+
+.estab td {
+  max-width: 130px;
+}
+
+.coltabacc th,
+.estabacc td,
+.tvptabacc td,
+.coltabacc td {
+  text-align: center;
+}
+
+.coltabacc {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin: 4px 2px;
+}
+
+.back {
+  background: rgba(227,239,255,.8);
+}
+
+.coltop {
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-collapse: collapse;
+}
+
+.colbot th {
+  border-bottom: 1px solid black;
+  border-collapse: collapse;
+}
+
+.collef {
+  border-left: 1px solid black;
+}
+
+// nottingham
+.exemtitle {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.exCodeBtn {
+  width: auto !important;
+  height: auto !important;
+  padding: 1px 4px;
+  margin: 0 2px;
+}
+
+.tExempDiv {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.excode {
+  padding: 1px 2px;
+  margin: 0 2px;
+  border: 1px solid #868e96;
+  border-radius: 0.25rem;
+  cursor: default;
+}
+
+
+
+/****************
+INVMAP POPUP
+****************/
+
+.btnlistmain {
+  margin: 5px 2px;
+}
+
+
+
+/****************
+EXTRA POPUP FRO PSA FRA
+****************/
+
+.deletediv {
+  & {
+    text-align: center;
+  }
+  .editbtn {
+    cursor: pointer;
+    width: 70px;
+    margin: 0 5px;
+  }
+}
+
+.editdiv {
+  & {
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    z-index: 900;
+  }
+  textarea {
+    width: 100%;
+    border-radius: 0.25rem;
+  }
+}
+
+.actiondiv {
+  display: inline-block;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
+
+
+/****************
+RADIO LIST FOR PSA FRA
+****************/
+
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 10px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #1d2731;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a black background color */
+.container:hover input ~ .checkmark,
+.container:hover input ~ .check {
+    background-color: #1d2731;
+}
+
+/* When the radio button is checked, add a custom background */
+.container input:checked ~ .checkmark,
+.container input:checked ~ .check {
+    background-color: #1d2731;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after,
+.check:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after,
+.container input:checked ~ .check:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 6px;
+	left: 6px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+
+
+/****************
+CHECKBOX LIST FOR PSA FRA
+****************/
+
+.check {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #1d2731;
+  border-radius: 0.25rem;
+}
+
+
+/* Style the checkmark/indicator */
+.container .check:after {
+  left: 6px;
+  top: 2px;
+  width: 8px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/****************
+SAVE BUTTON
+****************/
+
+.Copy_Btn {
+  @include mobile {
+    display: none;
+  }
+  @include tablet {
+    display: inline-block;
+  }
+}
+
+/****************
+TOOLTIP OF THE SAVE BUTTON
+****************/
+
+#popup-content .tooltip {
+  background: rgba(0, 0, 0, 0) !important;
+  top: -22px !important;
+  left: -15px !important;
+}
+
+#popup-content .arrow {
+  left: 22px !important;
+}

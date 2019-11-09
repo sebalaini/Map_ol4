@@ -1,0 +1,14 @@
+/****************
+OL5 BASE STYLE
+****************/
+
+.ol-zoom-in,
+.ol-zoom-out,
+.ol-overviewmap button,
+.ol-attribution {
+  display: none !important;
+}
+
+.ol-overviewmap-map .ol-viewport {
+  background: #fff;
+}

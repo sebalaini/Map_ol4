@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>TraffWeb Traffic Orders</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://sebalaini.github.io/Map_ol4/css/bootstrap.min.css">
+  <link href="https://sebalaini.github.io/Map_ol4/css/ol.css" rel="stylesheet" />
+  <link href="https://sebalaini.github.io/Map_ol4/css/style.css" rel="stylesheet">
+
+  <meta property="og:title" content="mapping project by Sebastiano">
+  <meta property="og:type" content="website">
+  <meta property="description" content="mapping project by Sebastiano">
+  <meta property="og:description" content="mapping project by Sebastiano">
+  <meta property="og:image" content="https://sebalaini.github.io/Map_ol4/img/ogimage.png">
+  <meta property="og:url" content="https://sebalaini.github.io/Map_ol4/">
+  <meta name=" twitter:card" content="summary_large_image">
+  <meta property="og:site_name" content="mapping project by Sebastiano">
+  <meta name="twitter:image:alt" content="mapping project Logo">
+
+</head>
+
+<body>
+  <div id="wrapper">
+
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-toggleable-md fixed-top">
+        <a class="d-none d-md-inline-block website" target="_blank" rel="noopener noreferrer">
+          <img src="/img/logo.png" id="customerlogo" class="d-none d-md-block navbar-brand" alt="customer logo">
+        </a>
+        <button class="navbar-toggler ml-auto navbar-toggler-right" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"><em class="fa fa-bars" aria-hidden="true"></em></span>
+        </button>
+        <div id="mainNav" class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><button class="nav-link" data-toggle="modal" data-target="#help" id='helppage' tabindex="0">Help</button></li>
+            <li class="nav-item"><button class="nav-link" data-toggle="modal" data-target="#about" id='aboutpage' tabindex="0">About</button></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+
+
+    <!-- MODAL DIV -->
+
+    <!-- help -->
+    <div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="help" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title helpStarter">Getting Started</h3>
+            <h3 class="modal-title helpNormal">Help</h3>
+            <button type="button" class="close" id="helpClose" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h4>Disclaimer</h4>
+            <p class="disclaimer">
+              The restrictions and information shown on TraffWeb are based upon confirmed Traffic Orders. This information is regularly updated, but some temporary, experimental or other orders may not be shown.<br>Any new restrictions, or notices of
+              new restrictions displayed on-street, may supersede the information shown here. TraffWeb shows a representation of the legal orders, but it is the order documents themselves that provide the legal basis by which regulatory measures on the
+              highway are enforced.
+            </p>
+            <h4>How to use this Site</h4>
+            <p>This web application displays parking places and parking restrictions in <span class="custName"></span>.</p>
+            <ul>
+              <li>The map can be repositioned by clicking on the map and dragging.</li>
+            <!-- <li>Use <code>Alt+Shift+Drag</code> to rotate the map.</li> -->
+              <li>Zoom in and out using the + or - or alternatively you can use the mouse wheel.</li>
+              <li>Use Print to create print layouts. You can drag marker text to suitable locations on the map.</li>
+              <li>Use the Search tool and search for an address location.</li>
+              <li>The Active Date filter can be used to modify the restrictions displayed.</li>
+              <li>The Legend tool can be used to toggle parking restrictions on or off.</li>
+              <li>Use the drawing tools to plot markers and add text. You can add up to five markers to the map.</li>
+              <li>Hover the cursor over a restriction to display key information or click on it to view more detailed information</li>
+              </ul>
+
+            <p id="privpolicy">This website uses cookies. By continuing to use the site you agree to our use of cookies. </p>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn privClose" data-dismiss="modal">Close</button>
+            <button type="button" class="btn" data-dismiss="modal" id="privaccept">I Accept</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- about -->
+    <div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="about" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">About</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h4><span class="custName"></span> has chosen Traffweb from Buchanan Computing to deliver this map-based service</h4>
+
+            <p>
+              Buchanan Computing specialises in web-based tools and cloud services that make information on highways and traffic easy to view and update.
+              This service uses our <a href="https://www.traffwebdemo.co.uk" target="_blank" rel="noopener noreferrer">Traffweb system</a> to provide quick and intuitive access to the data on base mapping from Ordnance Survey.
+            </p>
+
+            <p>We are the UK's foremost supplier of computer mapping (GIS) software for traffic and highway applications. Our software and services are used by almost every highway authority in UK and by central government.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- END MODAL DIV -->
+
+
+
+    <!-- CONTENT DIV -->
+    <div id="content">
+
+      <!-- MAP DIV -->
+      <main id="map">
+
+      <!-- POPUP DIV -->
+      <div id="popup" class="ol-popup">
+        <a href="#" id="popup-closer" class="fa fa-times ol-popup-closer"></a>
+        <div id="popup-content"></div>
+      </div>
+
+      <div id="info">
+      </div>
+
+
+        <!-- TOOLBAR DIV  dropdown -->
+        <div id="toolbar" class="dropdown">
+
+          <button class="btn dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-label='toolbar' aria-haspopup="true" aria-expanded="false">
+            <em class="fa tools fa-wrench" aria-hidden="true"></em>
+          </button>
+
+          <div class="dropdown-menu" id="dropdownDiv" aria-labelledby="dropdownMenu">
+
+            <div class="section">
+
+              <button type="button" class="custbtn zoombtn" id="zoomin"><em class="fa fa-plus" aria-hidden="true"></em></button>
+              <button type="button" class="custbtn zoombtn" id="zoomout"><em class="fa fa-minus" aria-hidden="true"></em></button>
+
+              <div id="tlrulercontainer">
+                <button class="tlruler" id="tlruler" value="off">
+                  <svg class="rulerSvg" xmlns="https://www.w3.org/2000/svg" viewBox="-35 -35 360 360" width="24" height="24"><path d="M274.504 63.515L218.82 7.831c-8.701-10.441-26.102-10.441-36.543 0L8.266 181.843c-3.48 5.22-6.96 12.181-6.96 19.141 0 6.96 1.74 13.921 6.96 19.141L63.95 275.81c5.22 3.48 12.181 6.96 19.141 6.96 6.96 0 12.181-3.48 17.401-6.96l174.012-174.012c3.48-5.22 6.96-12.181 6.96-19.141.001-6.961-1.739-13.922-6.96-19.142zm-12.18 26.102L88.312 263.629c-3.48 3.48-8.701 3.48-12.181 0l-55.684-55.684c0-1.74-1.74-3.48-1.74-6.96s0-5.22 1.74-6.96l20.011-20.011 21.752 21.752c1.74 1.74 5.22 1.74 6.96 1.74s5.22-1.74 5.22-1.74c3.48-3.48 3.48-8.701 0-12.181l-21.752-21.752 27.842-27.842 21.752 21.752c1.74 1.74 5.22 1.74 6.96 1.74s5.22-1.74 5.22-1.74c3.48-3.48 3.48-8.701 0-12.181L92.66 121.81l27.842-27.842 21.752 21.752c1.74 1.74 5.22 1.74 6.96 1.74 1.74 0 3.48-1.74 5.22-1.74 3.48-3.48 3.48-8.701 0-12.181l-21.751-21.752 27.842-27.842 21.752 21.752c1.74 1.74 5.22 1.74 6.96 1.74 1.74 0 3.48 0 5.22-1.74 3.48-3.48 3.48-8.701 0-12.181l-21.752-21.752 21.752-21.752c1.74 0 5.22-1.74 6.96-1.74 3.48 0 5.22 1.74 5.22 1.74l55.684 55.684c0 1.74 1.74 3.48 1.74 6.96.001 3.479.003 5.22-1.737 6.961z"/></svg>
+                </button>
+                <div class="tlrulerbox hide">
+                  <select name="tlruler" title="ruler options" class="custom-select" id="ruler">
+                    <!-- <option value="none">None</option> -->
+                    <option value="LineString">Length</option>
+                  </select>
+                </div>
+              </div>
+
+              <div id="tlprintcontainer">
+                <button type="button" class="custbtn" id="printbtn"><em class="fa fa-print" aria-hidden="true"></em></button>
+                <div class="printopt hide">
+                  <select name="tlprint" title="print options" class="custom-select" id="tlprint">
+                		<option disabled selected>Print...</option>
+                		<option value="html/printp.html">A4 Portrait</option>
+                		<option value="html/printl.html">A4 Landscape</option>
+                	</select>
+                </div>
+              </div>
+
+            </div> <!-- end div .section-->
+
+            <!-- TOOLWINDOW DIV  0 accordion -->
+            <div id="toolwindow">
+
+              <div id="accordion" role="tablist">
+
+                <!-- TOOLWINDOW DIV  3 accordion -->
+                <div id="legend" class="card">
+                  <div class="card-header" role="tab" id="headingThree">
+                    <h5 class="mb-0">
+                      <a class="btn collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Legend</a>
+                    </h5>
+
+                    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                      <div class="card-body">
+
+                        <div id="switchdisplay">
+							          </div>
+
+                        <div id="feature_list">
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- TOOLWINDOW DIV  4 accordion -->
+                <div id="drawing" class="card draw">
+                  <div class="card-header" role="tab" id="headingFour">
+                    <h5 class="mb-0">
+                      <a class="btn collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Drawing Tools</a>
+                    </h5>
+                  </div>
+
+                    <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour" data-parent="#accordion">
+                      <div class="card-body">
+
+                        <div id="drawtools">
+
+                          <div id="tldraw">
+                              <p>Draw a polygon or add a marker to the map...</p>
+
+                              <button type="button" name="Marker" id="Marker" class="custbtn fa fa-map-marker"></button>
+                              <button type="button" name="Polygon" id="Polygon" class="custbtn fa fa-square-o"></button>
+                              <button type="button" name="Circle" id="Circle" class="custbtn fa fa-circle-thin"></button>
+
+                            <p class="maxmarkers">All 5 markers plotted</p>
+                            <p class="maxfilters">All areas plotted</p>
+
+                          </div>
+
+                          <div class="markerdiv">
+
+                            <label id="maxmarkers">All markers plotted</label>
+                            <select name="tlfeature" title="marker options" id="tlfeature" class="custom-select">
+                              <option value="" disabled selected>View or edit ...</option>
+                            </select>
+
+                            <div class="textDiv">
+                            </div>
+
+                            <div class="markers">
+                              <button type="button" name="markloc" id="markloc" class="custbtn markauto fa fa-search">Locate</button>
+                              <button type="button" name="markdrag" id="markdrag" class="custbtn markauto fa fa-arrows-alt">Drag</button>
+                              <button type="button" name="markdel" id="markdel" class="custbtn markauto fa fa-trash-o">Delete</button>
+                            </div>
+                          </div>
+
+                          <div class="filter">
+
+                            <label id="maxfilter">All areas Highlighted</label>
+                            <select name="ftlfeature" title="filter options" id="ftlfeature" class="custom-select">
+                              <option value="" disabled selected>View or edit ...</option>
+                            </select>
+
+                            <div class="fmarkers">
+                              <button type="button" name="fmarkloc" id="fmarkloc" class="custbtn markauto fa fa-search">Locate</button>
+                              <button type="button" name="fmarkdrag" id="fmarkdrag" class="custbtn markauto fa fa-arrows-alt">Drag</button>
+                              <button type="button" name="fmarkdel" id="fmarkdel" class="custbtn markauto fa fa-trash-o">Delete</button>
+                            </div>
+
+                          </div>
+
+                        </div>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <!-- accordion -->
+            </div>
+            <!-- toolwindow -->
+          </div>
+          <!-- dropdown-menu -->
+        </div>
+        <!-- toolbar -->
+
+  </main>
+      <!-- end map -->
+    </div>
+    <!-- end content -->
+
+    <footer class="d-none d-md-block fixed-bottom">
+      <p>Copyright Sebastiano Laini <span id="Copyright"></span></p>
+    </footer>
+
+  </div>
+  <!-- end wrapper -->
+
+  <!-- print -->
+  <div class="modal fade" id="printMod" tabindex="-1" role="dialog" aria-labelledby="printMod" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Print</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <iframe src="" id="ifprint"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" id="printBtn">Print</button>
+          <button type="button" class="btn" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://sebalaini.github.io/Map_ol4/js/jquery.min.js"></script>
+  <script src="https://use.fontawesome.com/d2aca6cebe.js"></script>
+  <script src="https://sebalaini.github.io/Map_ol4/js/popper.min.js"></script>
+  <script src="https://sebalaini.github.io/Map_ol4/js/bootstrap.min.js"></script>
+  <script src="https://sebalaini.github.io/Map_ol4/js/ol.js"></script>
+
+</body>
+</html>

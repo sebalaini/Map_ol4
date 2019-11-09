@@ -1,0 +1,307 @@
+#customerlogo {
+  width: 300px;
+  height: 70px;
+  padding: 0;
+}
+
+
+
+/****************
+OL 4
+****************/
+
+.ol-rotate-reset,
+.ol-scale-line {
+  background: #1d2731;
+  color: #fff;
+}
+
+.ol-scale-line-inner {
+  border: 1px solid #fff;
+  border-top: 0;
+  color: #fff !important;
+}
+
+.ol-overviewmap-box {
+  border: 2px solid #1d2731;
+}
+
+
+
+/****************
+DISABLE BUTTONS
+****************/
+
+button:disabled,
+button[disabled] {
+  background: grey;
+}
+
+
+
+@media (min-width: 768px) {
+
+/****************
+NAV
+****************/
+
+  .navbar {
+    background: #1d2731;
+  }
+
+  .navbar-nav .nav-item .nav-link {
+    color: #d9b310;
+  }
+
+  .navbar-nav .nav-item .nav-link:hover,
+  .navbar-nav .nav-item .nav-link:focus {
+    color: #fff;
+  }
+
+  .navbar-toggler {
+    border-color: #d9b310;
+  }
+
+  .fa-bars {
+    color: #d9b310;
+  }
+
+  .fa-bars:hover {
+    color: #fff;
+  }
+
+
+  #dropdownMenu {
+    border: 1px solid #d9b310;
+  }
+
+
+
+/****************
+MODALS
+****************/
+
+  .modal-header {
+    background: #1d2731;
+    color: #d9b310;
+  }
+
+  .close span {
+    color: #d9b310;
+  }
+
+
+
+/****************
+BTN
+****************/
+
+  #dropdownMenu,
+  .tlruler,
+  .tlruler:hover,
+  .btn,
+  .custbtn,
+  .groupbtn {
+    background: #0b3c5d;
+    color: #fff;
+  }
+
+  .custbtnsel,
+  .tlruler:hover,
+  .btn:hover,
+  .btn:focus,
+  .custbtn:hover,
+  .custbtn:focus,
+  .groupbtn:hover,
+  .groupbtn:focus {
+    background: #328cc1;
+    color: #d9b310;
+  }
+
+  #popup-closer {
+    color: #1d2731;
+  }
+
+  #popup-closer:hover {
+    color: #d9b310;
+  }
+
+
+
+/****************
+SEARCH
+****************/
+
+  .searchcont {
+    color: #597cb0;
+  }
+
+
+
+/****************
+RULER / GEOLOCATION
+****************/
+
+  .locposbutton .posiconSvg,
+  .tlruler .rulerSvg {
+    fill: white;
+    stroke-width: 10px;
+    stroke: #fff;
+    margin-top: 2px;
+    }
+
+  .locposbutton:hover .posiconSvg,
+  .tlruler:hover .rulerSvg {
+    fill: #d9b310;
+    stroke: #d9b310;
+  }
+
+
+
+/****************
+LEGEND
+****************/
+
+  #feature_list .fa:before,
+  #feature_list .fa-remove:before,
+  #feature_list .fa-close:before,
+  #feature_list .fa-times:before {
+    background: #0b3c5d;
+    color: #fff;
+  }
+
+  #feature_list .group_btn:hover::before,
+  #feature_list li:hover,
+  #feature_list li:hover em::before {
+    color: #d9b310;
+  }
+
+  #feature_list li:hover em::before {
+    background: #328cc1;
+  }
+
+  #feature_list .group_btn:hover em::before {
+    color: #d9b310;
+  }
+
+
+
+/****************
+LOADING BAR
+****************/
+
+  .bar span {
+    border:1px solid #D9B310;
+    border-bottom-color:#977d0b;
+    background-color:#fff;
+    background-image:
+      -webkit-linear-gradient(
+      -45deg,
+      rgba(217, 179, 16, 1) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(217, 179, 16, 1) 50%,
+      rgba(217, 179, 16, 1) 75%,
+      transparent 75%,
+      transparent
+    );
+    background-image:
+      -moz-linear-gradient(
+      -45deg,
+      rgba(217, 179, 16, 1) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(217, 179, 16, 1) 50%,
+      rgba(217, 179, 16, 1) 75%,
+      transparent 75%,
+      transparent
+    );
+    background-image:
+      -ms-linear-gradient(
+      -45deg,
+      rgba(217, 179, 16, 1) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(217, 179, 16, 1) 50%,
+      rgba(217, 179, 16, 1) 75%,
+      transparent 75%,
+      transparent
+    );
+    background-image:
+      linear-gradient(
+      -45deg,
+      rgba(217, 179, 16, 1) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(217, 179, 16, 1) 50%,
+      rgba(217, 179, 16, 1) 75%,
+      transparent 75%,
+      transparent
+    );
+  }
+
+
+
+/****************
+ACCSMAP
+****************/
+
+.pdq_default {
+  background: #0b3c5d;
+  color: #fff;
+}
+
+.pdq_on {
+  background: #328cc1;
+  color: #d9b310;
+}
+
+
+/****************
+PSA and FRA
+****************/
+
+/* When the radio button is checked, add a custom background */
+.checkmark,
+.check,
+.container input:checked ~ .checkmark,
+.container input:checked ~ .check {
+  background-color: #0b3c5d;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark::after {
+  background: white;
+}
+
+.container .check::after {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+}
+
+/* On mouse-over, add a custom background color */
+.container:hover input ~ .checkmark,
+.container:hover input ~ .check {
+  background-color: #328cc1;
+}
+
+.container:hover input ~ .check::after {
+  border-color: #d9b310;
+}
+
+.container:hover input ~ .checkmark::after {
+  background: #d9b310;
+}
+
+
+
+/****************
+FOOTER
+****************/
+
+  footer {
+    background: #1d2731;
+    color: #fff;
+  }
+
+} /* end media query */
