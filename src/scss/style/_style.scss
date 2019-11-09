@@ -1,0 +1,177 @@
+/****************
+NAV
+****************/
+
+.navbar,
+#dropdownMenu {
+    background: #000;
+}
+
+.fa-bars {
+  vertical-align: middle;
+  margin-top: 4px;
+  color: #fff;
+}
+
+.fa-bars:hover {
+  color: #d9b310;
+}
+
+.navbar-nav .nav-item .nav-link {
+  color: #d9b310;
+  background: none;
+  border: none;
+}
+
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item .nav-link:focus {
+  color: #fff;
+}
+
+.navbar-toggler {
+  border-color: #d9b310;
+}
+
+#dropdownMenu {
+  border: 1px solid #d9b310;
+}
+
+
+
+/****************
+MODALS
+****************/
+
+.modal-header {
+  background: #000;
+  color: #d9b310;
+}
+
+.close span {
+  color: #d9b310;
+}
+
+#accessibility {
+  .h7 {
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+  ul {
+    list-style-type: disc;
+  }
+}
+
+
+
+/****************
+BTN
+****************/
+
+.btn,
+.custbtn,
+.groupbtn {
+  background: #000;
+  color: #fff;
+}
+
+
+.custbtnsel,
+.btn:hover,
+.btn:focus,
+.custbtn:hover,
+.custbtn:focus,
+.groupbtn:hover,
+.groupbtn:focus {
+  background: #000;
+  color: #d9b310;
+}
+
+
+
+/****************
+LEGEND
+****************/
+
+#feature_list .fa:before,
+#feature_list .fa-remove:before,
+#feature_list .fa-close:before,
+#feature_list .fa-times:before,
+#rtc_feature_list .fa:before,
+#rtc_feature_list .fa-remove:before,
+#rtc_feature_list .fa-close:before,
+#rtc_feature_list .fa-times:before,
+#inv_feature_list .fa:before,
+#inv_feature_list .fa-remove:before,
+#inv_feature_list .fa-close:before,
+#inv_feature_list .fa-times:before {
+  background: #000;
+  color: #fff;
+}
+
+#feature_list .group_btn:hover::before,
+#feature_list li:hover,
+#feature_list li:hover em::before,
+#rtc_feature_list .group_btn:hover::before,
+#rtc_feature_list li:hover,
+#rtc_feature_list li:hover em::before,
+#inv_feature_list .group_btn:hover::before,
+#inv_feature_list li:hover,
+#inv_feature_list li:hover em::before {
+  color: #d9b310;
+}
+
+#feature_list li:hover em::before,
+#rtc_feature_list li:hover em::before,
+#inv_feature_list li:hover em::before {
+  background: #000;
+}
+
+#feature_list .group_btn:hover em::before,
+#rtc_feature_list .group_btn:hover em::before,
+#inv_feature_list .group_btn:hover em::before {
+  color: #d9b310;
+}
+
+#feature_list .grpbtnlist::before,
+#rtc_feature_list .grpbtnlist::before,
+#inv_feature_list .grpbtnlist::before {
+  background: none !important;
+  border: none !important;
+}
+
+
+
+/****************
+FORM
+****************/
+
+.error {
+  color: red;
+}
+
+
+
+/****************
+ACCSMAP LEGEND
+****************/
+
+.pdq_default {
+  background: #000;
+  color: #fff;
+}
+
+.pdq_on {
+  background: #000;
+  color: #d9b310;
+}
+
+
+
+/****************
+FOOTER
+****************/
+
+footer {
+  background: #000;
+  color: #fff;
+}

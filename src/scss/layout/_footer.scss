@@ -1,0 +1,14 @@
+/****************
+FOOTER
+****************/
+
+footer {
+  & {
+    background: grey;
+    color: #fff;
+    text-align: center;
+  }
+  p {
+    margin: 7px auto;
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "settings": [{
+    "licenceno": "100019783",
+    "urlmain": "http://www.traffwebdev.uk/parking/",
+    "wmsmap": "http://www.traffwebdev.uk/cgi-bin/wmsmaps3?&amp;service=WMS",
+    "wmsprint": "http://www.traffwebdev.uk/cgi-bin/wmsmaps3?&amp;service=WMS",
+    "wmslayer": "bccache",
+    "wmsfeat": "http://www.traffwebdev.uk/cgi-bin/bcparking?&amp;service=WMS",
+    "bounds": "503000,174000,513000,193000",
+    "defpos": "508000,182700,1",
+    "scales": "250,500,1000,2500,5000,10000,22000",
+    "minZoom": "11",
+    "ovlayer": "bccache2",
+    "ovmap": "http://www.buchananmaps.co.uk/mapcache/?",
+    "ovminratio": "16",
+    "ovmaxratio": "64",
+    "area": "",
+    "customername": "Buchanan Computing Ltd",
+    "website": "",
+    "popupname": "",
+    "tools": "on",
+    "sched": "data/sched/",
+    "msched": "data/msched/",
+    "twlayers": "ordersr,ordersl,ordersp,mordersr,mordersl,mordersp,Signs,twpzones,twaddlist,twtzones",
+    "legend": "Other,Lines,Parking Bays,Suspension,Signs,Speed Limits,Banned Turns,Structural and Environmental,Parking Zones,Tariff Zones",
+    "defsel": "100001,100002,120001,110001,1009,1001,1002,1003,1004,1005,1006,1007,1008,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1022,1023,1024,1025,1026,1027,1028,1029,1020,1021",
+    "publishdate": "18/01/2019"
+  }]
+}
